@@ -1,0 +1,334 @@
+/* =============================================== */
+/* CSS YANG ANDA BERIKAN SEBELUMNYA (BAGIAN UTAMA) */
+/* =============================================== */
+
+.registrasi {
+    background-color: rgba(255, 255, 255, 1.0);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh; /* Pastikan mengisi tinggi viewport */
+    padding: 20px 0; /* Beri padding atas bawah jika konten lebih tinggi dari viewport */
+    box-sizing: border-box;
+}
+
+.registrasi .overlap-wrapper {
+    background: linear-gradient(146deg, rgba(110, 193, 228, 1) 0%, rgba(22, 34, 42, 1) 100%);
+    /* width: 1440px; */ /* Diubah */
+    max-width: 1440px;
+    width: 100%; /* Memungkinkan untuk menyusut */
+    /* height: 1236px; */ /* Biarkan tinggi menyesuaikan konten atau gunakan min-height */
+    min-height: 1100px; /* Perkiraan tinggi untuk konten */
+    margin: 0 auto; /* Tengahkan */
+    display: flex; /* Untuk menengahkan .overlap */
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Padding jika .overlap lebih kecil */
+    box-sizing: border-box;
+}
+
+.registrasi .overlap {
+    position: relative;
+    /* width: 1000px; */ /* Diubah */
+    max-width: 1000px;
+    width: 100%; /* Ambil lebar penuh dari parent yang sudah dibatasi max-width nya */
+    /* height: 1093px; */ /* Biarkan tinggi menyesuaikan konten */
+    background-color: #ffffff;
+    border-radius: 27px;
+    /* top: 76px; */ /* Dihapus, biarkan flex menengahkan */
+    /* left: 220px; */ /* Dihapus */
+    padding: 40px; /* Padding internal */
+    box-sizing: border-box;
+    margin: 20px; /* Margin jika diperlukan */
+}
+
+.registrasi .overlap-group {
+    position: relative; /* Diubah dari absolute */
+    /* width: 629px; */ /* Diubah */
+    max-width: 629px;
+    width: 100%; /* Mengisi .overlap dengan padding */
+    margin: 0 auto; /* Tengahkan form group */
+    /* top: 191px; */ /* Dihapus */
+    /* left: 186px; */ /* Dihapus */
+}
+
+.registrasi .rectangle { /* Background bergaris di dalam form */
+    width: calc(100% + 40px); /* Sedikit lebih lebar dari konten grup untuk efek border */
+    max-width: 635px; /* Max width + sedikit padding */
+    min-height: 751px; /* Pertahankan tinggi minimal jika konten sedikit */
+    /* top: 99px; */ /* Diubah */
+    /* left: 16px; */ /* Diubah */
+    margin: 90px auto 0 auto; /* Posisikan di bawah selamat datang, tengahkan */
+    transform: translateX(-20px); /* Geser ke kiri sedikit untuk menyeimbangkan padding */
+    border-radius: 15px;
+    position: absolute; /* Relatif terhadap overlap-group */
+    background-color: #ffffff;
+    border: 1px solid #b1b1b1;
+    z-index: -1; /* Taruh di belakang elemen form */
+}
+
+/* Penyesuaian posisi grup form agar tidak absolut semua */
+.registrasi .group,
+.registrasi .group-2,
+.registrasi .group-3,
+.registrasi .group-4,
+.registrasi .group-5,
+.registrasi .group-6,
+.registrasi .group-7 {
+    position: relative; /* Tidak absolut lagi */
+    width: 100%; /* Atau max-width tertentu jika desain mengharuskan */
+    max-width: 540px; /* Lebar umum dari grup asli */
+    margin: 0 auto 25px auto; /* Tengahkan dan beri jarak bawah */
+    /* Hapus top & left absolut, biarkan flow dokumen atau margin yang mengatur */
+}
+
+/* Khusus untuk .group-5 (Jenis Kelamin) agar elemen di dalamnya pas */
+.registrasi .group-5 {
+    min-height: 80px; /* Cukup untuk elemen di dalamnya (top: 35/36px + tinggi elemen) */
+    max-width: 300px; /* Sesuai perkiraan lebar kontennya */
+    padding-top: 0; /* Atur sesuai kebutuhan jika label utama ada di atasnya */
+}
+
+
+.registrasi .div,
+.registrasi .div-wrapper,
+.registrasi .overlap-2 { /* Kontainer input */
+    position: relative; /* Dari absolute ke relative */
+    width: 100%;
+    height: 44px; /* Pertahankan tinggi jika desain fix */
+    /* top: 28px; left: 0; */ /* Hapus, biarkan margin dari label yang mengatur */
+    margin-top: 8px; /* Jarak dari label */
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #b1b1b1;
+}
+.registrasi .overlap-2 { /* Khusus untuk input tanggal */
+    border-color: #d5e7ff;
+}
+
+
+/* Label utama field */
+.registrasi .text-wrapper,
+.registrasi .text-wrapper-3,
+.registrasi .text-wrapper-6,
+.registrasi .text-wrapper-7 {
+    position: relative; /* Dari absolute ke relative */
+    display: block;
+    width: auto;
+    margin-bottom: 5px;
+    /* Hapus top & left */
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+}
+
+
+.registrasi .nama-lengkap { /* Tidak terpakai */ }
+.registrasi .text-wrapper-2 { /* Tidak terpakai, jadi placeholder */ }
+.registrasi .text-wrapper-4 { /* Tidak terpakai */ }
+.registrasi .p { /* Tidak terpakai, jadi placeholder */ }
+.registrasi .text-wrapper-5 { /* Tidak terpakai, jadi placeholder */ }
+.registrasi .text-wrapper-10 { /* Tidak terpakai, jadi placeholder */ }
+.registrasi .text-wrapper-11 { /* Tidak terpakai, jadi placeholder */ }
+
+
+.registrasi .selamat-datang-wrapper {
+    position: relative; /* Dari absolute */
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px; /* Jarak ke form */
+    /* top & left dihapus */
+}
+
+.registrasi .selamat-datang {
+    position: relative; /* Dari absolute */
+    width: auto;
+    /* top & left dihapus */
+    font-family: "Poppins-Bold", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 25px;
+    text-align: center;
+}
+
+.registrasi .logo {
+    position: absolute;
+    width: 100px; /* Sedikit lebih kecil untuk fleksibilitas */
+    height: 100px;
+    top: 30px; /* Sesuaikan */
+    left: 50%; /* Tengahkan */
+    transform: translateX(-50%);
+    object-fit: cover;
+    z-index: 10; /* Pastikan di atas jika overlap-wrapper punya background */
+}
+
+/* Posisi elemen di group-5 (Jenis Kelamin) sudah absolut relatif ke group-5 */
+.registrasi .rectangle-2 {
+    width: 22px; height: 22px; top: 35px; left: 0; border-radius: 100px; position: absolute; background-color: #ffffff; border: 1px solid #b1b1b1; z-index: 1;
+    /* Tambahkan untuk ::after */
+    display: flex; align-items: center; justify-content: center;
+}
+.registrasi .rectangle-3 {
+    width: 22px; height: 22px; top: 35px; left: 141px; border-radius: 100px; position: absolute; background-color: #ffffff; border: 1px solid #b1b1b1; z-index: 1;
+    /* Tambahkan untuk ::after */
+    display: flex; align-items: center; justify-content: center;
+}
+.registrasi .text-wrapper-8 { position: absolute; width: 90px; top: 36px; left: 32px; font-family: "Poppins-Regular", Helvetica; font-weight: 400; color: #000000; font-size: 16px; z-index: 1;}
+.registrasi .text-wrapper-9 { position: absolute; width: 104px; top: 36px; left: 173px; font-family: "Poppins-Regular", Helvetica; font-weight: 400; color: #000000; font-size: 16px; z-index: 1;}
+
+/* Posisi elemen di group-7 (Tombol, dll) */
+.registrasi .fontisto-date { position: absolute; width: 19px; height: 19px; top: 11px; left: 502px; }
+.registrasi .overlap-3 { /* Kontainer tombol daftar */
+    position: relative; /* Diubah dari absolute agar flow lebih baik di group-7 */
+    width: 100%; /* Ambil lebar penuh dari group-7 */
+    max-width: 535px; /* Batas lebar asli */
+    height: 44px;
+    /* top: 115px; left: 0; */ /* Dihapus, gunakan margin */
+    margin: 20px auto; /* Jarak dan tengahkan */
+    background-color: #d5e7ff;
+    border-radius: 10px;
+}
+.registrasi .text-wrapper-12 { /* Teks "Daftar" */
+    position: absolute; width: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: "Poppins-Regular", Helvetica; font-weight: 400; color: #000000; font-size: 16px; white-space: nowrap; text-align: center;
+}
+.registrasi .sudah-punya-akun-log {
+    position: relative; /* Diubah dari absolute */
+    width: 100%;
+    text-align: center;
+    margin-top: 15px; /* Jarak dari tombol */
+    /* top, left, transform dihapus */
+    font-family: "Poppins-Regular", Helvetica; font-weight: 400; font-size: 13px;
+}
+.registrasi .span { color: #000000; }
+.registrasi .text-wrapper-13 { color: #757575; text-decoration: none; } /* Styling untuk link login */
+.registrasi .text-wrapper-13:hover { text-decoration: underline; }
+
+
+/* ===================================================== */
+/* CSS TAMBAHAN/PENYESUAIAN UNTUK ELEMEN INTERAKTIF      */
+/* ===================================================== */
+
+.registrasi .div input,
+.registrasi .div-wrapper input,
+.registrasi .overlap-2 input {
+    box-sizing: border-box; width: 100%; height: 100%; border: none; outline: none; background-color: transparent; padding: 10px 15px; font-family: "Poppins-Regular", Helvetica; font-size: 16px; color: #000000;
+}
+.registrasi .overlap-2 input[type="date"] { padding-right: 40px; }
+
+input::placeholder { font-family: "Poppins-Regular", Helvetica; font-weight: 400; color: #7b7a7a; font-size: 16px; opacity: 1; }
+input::-webkit-input-placeholder { font-family: "Poppins-Regular", Helvetica; font-weight: 400; color: #7b7a7a; font-size: 16px; }
+input::-moz-placeholder { font-family: "Poppins-Regular", Helvetica; font-weight: 400; color: #7b7a7a; font-size: 16px; opacity: 1; }
+input:-ms-input-placeholder { font-family: "Poppins-Regular", Helvetica; font-weight: 400; color: #7b7a7a; font-size: 16px; }
+input::-ms-input-placeholder { font-family: "Poppins-Regular", Helvetica; font-weight: 400; color: #7b7a7a; font-size: 16px; }
+
+.registrasi .group-5 input[type="radio"].custom-radio-input {
+    position: absolute; opacity: 0; width: 22px; height: 22px; cursor: pointer; z-index: 2;
+}
+#laki_laki.custom-radio-input { left: 0; top: 35px; }
+#perempuan.custom-radio-input { left: 141px; top: 35px; }
+
+.registrasi .group-5 .custom-radio-label-wrapper { cursor: pointer; display: inline-block; /* Memastikan label punya dimensi untuk elemen absolut di dalamnya */ position: relative; /* Konteks untuk elemen span di dalamnya jika perlu */ }
+
+/* Umpan balik visual untuk radio button yang dipilih */
+.registrasi .group-5 input[type="radio"].custom-radio-input:checked + .custom-radio-label-wrapper .rectangle-2::after,
+.registrasi .group-5 input[type="radio"].custom-radio-input:checked + .custom-radio-label-wrapper .rectangle-3::after {
+    content: "";
+    display: block;
+    width: 12px; /* Ukuran titik dalam */
+    height: 12px;
+    background-color: #0d6efd; /* Warna titik (biru contoh) */
+    border-radius: 50%;
+    /* Diposisikan di tengah .rectangle-2 / .rectangle-3 oleh flex di atas atau:
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    */
+}
+
+.registrasi .overlap-3 { cursor: pointer; position: relative; }
+.registrasi .overlap-3 button.submit-button {
+    width: 100%; height: 100%; border: none; background: transparent; padding: 0; cursor: pointer; color: inherit; font-size: inherit; position: relative;
+}
+.registrasi .fontisto-date { pointer-events: none; }
+
+/* Media Queries untuk penyesuaian dasar */
+@media (max-width: 1200px) {
+    .registrasi .overlap-wrapper {
+        padding: 15px;
+    }
+    .registrasi .overlap {
+        padding: 30px;
+        margin: 15px;
+    }
+}
+
+@media (max-width: 768px) { /* Tablet */
+    .registrasi .overlap-wrapper {
+        padding: 10px;
+        min-height: auto; /* Tinggi menyesuaikan konten */
+    }
+    .registrasi .overlap {
+        padding: 20px;
+        margin: 10px;
+        min-height: auto;
+    }
+    .registrasi .logo {
+        width: 80px;
+        height: 80px;
+        top: 20px;
+    }
+    .registrasi .selamat-datang {
+        font-size: 20px;
+    }
+    .registrasi .overlap-group {
+        padding-top: 80px; /* Beri ruang jika logo absolut di atasnya */
+    }
+    .registrasi .rectangle { /* Sembunyikan atau sederhanakan background form internal */
+        display: none; 
+        /* Atau:
+        width: 100%;
+        margin: 0;
+        transform: none;
+        position: relative;
+        border: 1px solid #eee;
+        z-index: auto;
+        min-height: auto;
+        margin-bottom: 20px;
+        */
+    }
+    .registrasi .fontisto-date {
+        left: auto; /* Biarkan di kanan input */
+        right: 10px; /* Contoh posisi baru */
+    }
+    .registrasi .overlap-2 input[type="date"] {
+        padding-right: 30px; /* Sesuaikan untuk ikon */
+    }
+}
+
+@media (max-width: 480px) { /* Mobile */
+    .registrasi .overlap {
+        padding: 15px;
+        border-radius: 10px; /* Kurangi radius */
+    }
+    .registrasi .selamat-datang {
+        font-size: 18px;
+    }
+    .registrasi .group-5 { /* Tata ulang jenis kelamin jika perlu */
+        max-width: none; /* Ambil lebar penuh */
+    }
+    .registrasi .rectangle-3, 
+    #perempuan.custom-radio-input,
+    .registrasi .text-wrapper-9 { /* Pindahkan opsi perempuan ke bawah laki-laki */
+        top: 70px; /* Contoh posisi baru di bawah laki-laki */
+        left: 0; /* Mulai dari kiri yang sama dengan laki-laki */
+    }
+    .registrasi .text-wrapper-9 {
+        left: 32px; /* Sejajar dengan teks Laki-Laki */
+    }
+    .registrasi .group-5 {
+        min-height: 120px; /* Tambah tinggi untuk 2 baris radio */
+    }
+}

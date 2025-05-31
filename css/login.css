@@ -1,0 +1,276 @@
+/* Pastikan variabel CSS dari globals.css atau styleguide.css terdefinisi */
+/* :root { ... (definisi variabel CSS jika tidak ada di globals.css) ... } */
+
+.login {
+    background-color: rgba(255, 255, 255, 1.0);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login .overlap-group-wrapper {
+    background: linear-gradient(152deg, rgba(110, 193, 228, 1) 0%, rgba(61, 107, 126, 1) 98%);
+    max-width: 1440px;
+    width: 100%;
+    min-height: 80vh;
+    /* max-height: 1024px; */ /* Hapus max-height agar lebih fleksibel */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.login .overlap-group {
+    position: relative;
+    max-width: 1230px;
+    width: 100%;
+    min-height: 650px; /* Sesuaikan tinggi minimal */
+    /* max-height: 759px; */ /* Hapus max-height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login .rectangle {
+    position: relative; /* Bukan absolute, biarkan ia di tengah overlap-group */
+    width: 100%;
+    max-width: 1100px; /* Lebar kotak putih utama, bisa disesuaikan */
+    min-height: 600px; /* Tinggi minimal */
+    background-color: #ffffff;
+    border-radius: 27px;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.1); /* Shadow lebih soft */
+    display: flex;
+    flex-wrap: wrap; /* Untuk stacking di layar kecil */
+    align-items: stretch; /* Membuat panel kiri dan kanan sama tinggi */
+    overflow: hidden;
+}
+
+/* Panel Kiri dan Kanan */
+.login-left-panel,
+.login-right-panel {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0; /* Biarkan flex-grow yang menentukan pembagian, atau set 50% */
+    min-width: 300px; /* Lebar minimal untuk tiap panel sebelum wrapping */
+    padding: 30px 40px; /* Padding Y lebih banyak */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+/* Untuk pembagian 50/50 yang lebih kaku jika konten memungkinkan */
+@media (min-width: 993px) { /* Hanya berlaku jika layar cukup lebar untuk 2 kolom */
+    .login-left-panel,
+    .login-right-panel {
+        flex-basis: 50%;
+    }
+}
+
+
+/* ---- Styling elemen di dalam Panel Kiri ---- */
+.login .login-left-panel .logo {
+    position: relative; /* Reset dari absolute */
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 25px auto; /* Tengahkan dan beri jarak bawah */
+    object-fit: cover;
+}
+
+.login .login-left-panel .group {
+    position: relative; /* Reset dari absolute */
+    width: 100%;
+    max-width: 400px; /* Batasi lebar blok teks */
+    margin: 0 auto;
+}
+
+.login .selamat-datang-login {
+    position: relative; /* Reset dari absolute */
+    width: 100%;
+    font-family: "Poppins-Bold", Helvetica; /* Pastikan font tersedia */
+    font-weight: 700;
+    color: #000000;
+    font-size: 22px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* ---- Styling elemen di dalam Panel Kanan ---- */
+.login .login-right-panel .form-register {
+    position: relative; /* Reset dari absolute */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 380px; /* Lebar form */
+    gap: var(--size-space-600, 18px); /* Jarak antar field */
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    margin: 0 auto; /* Tengahkan form di dalam panel */
+}
+
+.login .input-field {
+    display: flex; flex-direction: column; align-items: flex-start;
+    gap: var(--size-space-200, 6px);
+    width: 100%;
+}
+
+.login .label,
+.login .text-wrapper {
+    font-family: var(--body-base-font-family, "Poppins-Regular", sans-serif);
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+    padding-bottom: 4px;
+    text-align: left;
+    align-self: stretch;
+}
+
+.login .input,
+.login .value { /* Input Email dan Password */
+    padding: 12px 15px;
+    background-color: var(--color-background-default-default, #f4f6f8);
+    border-radius: var(--size-radius-200, 6px);
+    border: 1px solid var(--color-border-default-default, #d1d9e0);
+    width: 100%;
+    height: 46px;
+    box-sizing: border-box;
+    font-family: var(--single-line-body-base-font-family, "Poppins-Regular", sans-serif);
+    font-weight: 400;
+    color: var(--color-text-default-default, #333333);
+    font-size: 15px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.login .input:focus,
+.login .value:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+    outline: none;
+}
+.login .input::placeholder,
+.login .value::placeholder {
+     color: var(--color-text-default-tertiary, #888);
+     font-size: 14px;
+}
+
+.login .value-wrapper { /* Hanya sebagai wrapper jika diperlukan, styling utama di input.value */
+    width: 100%;
+    height: 46px;
+    border-radius: var(--size-radius-200, 6px);
+    /* Jika .value sudah di-style, wrapper ini tidak perlu border/bg */
+}
+.login .value-wrapper input.value {
+    /* Jika wrapper punya border/bg, maka input di dalamnya: */
+    /* border: none; background: transparent; */
+}
+
+.login .checkbox-field {
+    display: flex; flex-direction: column; align-items: flex-start; width: 100%;
+    margin-top: 5px; /* Jarak kecil */
+}
+.login .checkbox-field .div {
+    display: flex; align-items: center; gap: var(--size-space-300, 8px);
+}
+.login input[type="checkbox"].hidden-checkbox {
+    opacity: 0; position: absolute; width: 0; height: 0;
+}
+.login .custom-checkbox-container {
+    display: flex; align-items: center; cursor: pointer; gap: 8px;
+}
+.login .checkbox {
+    width: 17px; height: 17px;
+    background-color: var(--color-background-default-default, #f0f0f0);
+    border-radius: var(--size-radius-100, 4px);
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid #ccc;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.login .check {
+    width: 9px; height: 9px; display: none;
+}
+.login input[type="checkbox"].hidden-checkbox:checked + .custom-checkbox-container .checkbox {
+    background-color: #0d6efd; border-color: #0a58ca;
+}
+.login input[type="checkbox"].hidden-checkbox:checked + .custom-checkbox-container .checkbox .check {
+    display: inline; filter: brightness(0) invert(1);
+}
+.login .label-2 {
+    font-family: var(--body-base-font-family, "Poppins-Regular", sans-serif);
+    font-weight: 400; color: #555; font-size: 13px;
+}
+
+.login .button-group-wrapper {
+    display: flex; align-self: stretch; width: 100%; margin-top: 15px;
+}
+.login .button {
+    box-sizing: border-box; display: flex; align-items: center; justify-content: center;
+    padding: 12px 15px; position: relative; flex: 1; flex-grow: 1;
+    background-color: #0d6efd; border-radius: var(--size-radius-200, 6px);
+    border: 1px solid #0d6efd; cursor: pointer; text-align: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    height: 46px;
+}
+.login .button:hover {
+    background-color: #0b5ed7; border-color: #0a58ca;
+}
+.login .button-2 {
+    font-family: var(--single-line-body-base-font-family, "Poppins-Medium", sans-serif);
+    font-weight: 500; color: #ffffff; font-size: 16px; white-space: nowrap;
+}
+
+.login .login-right-panel .belum-punya-akun {
+    position: relative; /* Reset dari absolute */
+    width: 100%;
+    max-width: 380px; /* Sejajar dengan form */
+    margin: 20px auto 0 auto; /* Jarak dari tombol, tengahkan */
+    font-family: "Poppins-Regular", Helvetica; font-weight: 400;
+    font-size: 13px; text-align: center;
+}
+.login .span { color: #555; }
+.login .text-wrapper-2 {
+    color: #0d6efd; text-decoration: none; font-weight: 500;
+}
+.login .text-wrapper-2:hover { text-decoration: underline; }
+
+/* --- Responsivitas untuk Tata Letak Kolom --- */
+@media (max-width: 992px) {
+    .login .rectangle {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 20px; /* Padding agar konten tidak menempel saat stack */
+        min-height: auto;
+        max-height: none; /* Hapus max-height agar bisa memanjang */
+    }
+    .login-left-panel,
+    .login-right-panel {
+        flex-basis: auto; /* Biarkan konten menentukan tinggi */
+        width: 100%;
+        max-width: 450px; /* Batasi lebar konten di tengah saat stack */
+        padding: 20px 0; /* Kurangi padding horizontal */
+    }
+    .login-left-panel { order: 1; }
+    .login-right-panel { order: 2; }
+
+    .login .login-left-panel .logo { width: 100px; height: 100px; margin-bottom: 15px; }
+    .login .selamat-datang-login { font-size: 20px; }
+}
+
+@media (max-width: 767px) {
+    .login .overlap-group-wrapper { padding: 10px; }
+    .login .rectangle { margin: 0; width: 100%; border-radius: 15px; padding: 20px 15px; } /* Lebih kecilkan padding */
+    .login-left-panel, .login-right-panel { padding: 15px 0; max-width: 100%; }
+    .login .login-left-panel .logo { width: 80px; height: 80px; }
+    .login .selamat-datang-login { font-size: 18px; }
+    .login .input, .login .value, .login .value-wrapper, .login .button { height: 44px; font-size: 14px; }
+    .login .button-2 { font-size: 15px; }
+    .login .label, .login .text-wrapper, .login .label-2, .login .belum-punya-akun { font-size: 13px; }
+}
