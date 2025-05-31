@@ -1,0 +1,263 @@
+/* --- Global Styles & Font Import (Dipertahankan jika dashboard membutuhkannya) --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0; padding: 0; font-family: 'Outfit', sans-serif;
+    background-color: #f5eee1; line-height: 1.6; color: #333;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none; color: inherit;
+}
+
+/* --- Main Layout: Dashboard Container (Berlaku untuk Dashboard) --- */
+#dashboard-container {
+    display: flex; min-height: 100vh; background-color: #f5eee1;
+    flex-direction: row; flex-wrap: nowrap;
+}
+
+/* --- Main Content Area Styles (Berlaku untuk Dashboard) --- */
+.main-content {
+    flex-grow: 1; margin-left: 225px; /* Default untuk sidebar terbuka */
+    width: calc(100% - 225px);
+    display: flex; flex-direction: column; min-height: 100vh;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    min-width: 0; box-sizing: border-box;
+}
+#dashboard-container.sidebar-collapsed .main-content { /* Jika JS menambahkan .sidebar-collapsed ke #dashboard-container */
+    margin-left: 60px; /* Lebar sidebar ciut */
+    width: calc(100% - 60px);
+}
+.page-content-area {
+    flex-grow: 1; padding: 30px; width: 100%; box-sizing: border-box;
+}
+
+/* --- Main Header (Login/Register & Profile Button) Styles --- */
+.main-header {
+    width: 100%;
+    padding: 15px 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: transparent;
+    margin-bottom: 20px;
+}
+.header-buttons { display: flex; gap: 15px; }
+.header-button { display: inline-block; padding: 10px 20px; border-radius: 25px; font-size: 0.95rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; }
+.login-button { background-color: #1b3b6f; color: #ffffff; border: 1px solid #1b3b6f; }
+.login-button:hover { background-color: #003160; box-shadow: 0 2px 8px rgba(27, 59, 111, 0.4); }
+.register-button { background-color: #ffffff; color: #1b3b6f; border: 1px solid #1b3b6f; }
+.register-button:hover { background-color: #e0e0e0; box-shadow: 0 2px 8px rgba(27, 59, 111, 0.2); }
+
+.profile-button-header-round {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    margin-left: 15px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+}
+.profile-button-header-round img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.profile-button-header-round:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* --- Page Titles & Section Titles (Digunakan di Dashboard) --- */
+.page-main-title {
+    font-size: 2.2rem; color: #003160; margin-bottom: 30px;
+    text-align: center; font-weight: 700;
+}
+.section-title { /* Untuk judul section buku di dashboard */
+    font-size: 1.8rem; color: #bf7711; margin-top: 10px;
+    margin-bottom: 20px; text-align: left; width: 100%;
+    padding-left: 0px; font-weight: 600;
+}
+/* .section-subtitle tidak digunakan di dashboard, jadi bisa dihilangkan jika ini CSS khusus dashboard */
+
+/* --- DASHBOARD PAGE SPECIFIC STYLES --- */
+.dashboard-top-layout {
+    display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 30px;
+}
+.dashboard-top-layout > .hero-section {
+    flex: 1 1 45%; min-width: 320px; margin: 0;
+}
+.dashboard-top-layout > .new-arrivals-section {
+    flex: 1 1 45%; min-width: 320px; width: auto;
+}
+
+.hero-section {
+    background-color: #1b3b6f; border-radius: 30px; padding: 30px;
+    display: flex; justify-content: center; align-items: center;
+    width: 100%; max-width: 700px; /* Tetap ada margin auto dari rule aslinya jika tidak dioverride di .dashboard-top-layout > .hero-section */
+    /* margin: 0 auto 30px auto; Dihapus karena .dashboard-top-layout yang mengatur */
+}
+.hero-text-container {
+    background-color: #d5e7ff; border-radius: 30px; padding: 20px;
+    width: 100%; height: auto; display: flex; align-items: center;
+    justify-content: center; text-align: center;
+}
+.hero-text { font-size: 1.2rem; color: #2c2c2c; margin: 0; }
+
+.book-grid { /* Spesifik untuk dashboard */
+    width: 100%; padding: 20px; background-color: #ffffff;
+    border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: grid; gap: 20px; align-items: start; margin-bottom: 30px;
+    grid-template-columns: 1fr; /* Default untuk mobile terkecil */
+}
+/* Kolom responsif untuk .book-grid dashboard */
+@media (min-width: 481px) { .book-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 768px) { .book-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1025px) { .book-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.book-card { /* Spesifik untuk dashboard */
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 15px; background-color: #ffffff; border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08); height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.book-card:hover { transform: translateY(-5px); box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
+.book-image { /* Spesifik untuk dashboard */
+    width: 80%; max-width: 120px; height: auto; object-fit: cover; margin-bottom: 10px;
+}
+.book-title { /* Spesifik untuk dashboard (h3) */
+    font-size: 0.9rem; margin-top: 5px; margin-bottom: 10px; width: 100%;
+    white-space: normal; font-weight: 600; color: #333;
+    line-height: 1.3; min-height: 2.6em; /* Ruang untuk 2 baris */
+}
+.star-rating { /* Spesifik untuk dashboard */
+    display: flex; justify-content: center; margin-top: 5px; margin-bottom: 10px;
+}
+.star { /* Spesifik untuk dashboard */
+    width: 16px; height: 16px; margin-right: 2px;
+}
+.detail-button { /* Spesifik untuk dashboard */
+    width: 90%; max-width: 120px; height: 32px; background-color: #e87e4b;
+    border-radius: 39px; display: flex; justify-content: center; align-items: center;
+    margin-top: auto; cursor: pointer; border: none; color: #ffffff;
+    font-size: 0.85rem; font-weight: 600;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(232, 126, 75, 0.3);
+}
+.detail-button:hover { background-color: #bf7711; box-shadow: 0 6px 12px rgba(191, 119, 17, 0.4); }
+
+.new-arrivals-section { /* Spesifik untuk dashboard */
+    width: 100%; height: auto; border-radius: 30px; overflow: hidden;
+    margin-top: 0; margin-bottom: 30px; padding: 25px;
+    background-color: #ffffff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex; flex-direction: column; align-items: center;
+}
+.new-arrival-images {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 20px; width: 100%; max-width: 900px;
+}
+.new-arrival-image { /* Di dashboard */
+    width: auto; max-height: 120px; min-width: 80px;
+    object-fit: contain; border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.new-arrival-image:hover { transform: scale(1.05); }
+
+/* --- Floating Action Button (FAB) for Search --- */
+.search-fab {
+    position: fixed; bottom: 30px; right: 30px; z-index: 100;
+    background-color: #e87e4b; border-radius: 50%;
+    width: 60px; height: 60px; display: flex; align-items: center;
+    justify-content: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.search-fab:hover { background-color: #bf7711; transform: translateY(-3px); }
+.search-fab .state-layer { padding: 0; }
+.search-fab .icon { width: 30px; height: 30px; filter: brightness(0) invert(1); }
+
+/* --- Responsive Adjustments for Dashboard Elements --- */
+
+@media (max-width: 1200px) { /* Tablet & Smaller Desktop */
+    .page-content-area { padding: 20px; }
+    .page-main-title { font-size: 2rem; margin-bottom: 25px; }
+    .section-title { font-size: 1.6rem; }
+    
+    .dashboard-top-layout > .hero-section,
+    .dashboard-top-layout > .new-arrivals-section {
+        flex-basis: 100%; max-width: 100%;
+    }
+    .hero-section { max-width: 100%; padding: 25px; } /* Override desktop max-width */
+    .hero-text { font-size: 1.1rem; }
+
+    .main-header { padding: 10px 0px; margin-bottom: 15px; } /* Adjusted padding, 0px horizontal as parent .page-content-area handles it */
+    .header-button { padding: 8px 15px; font-size: 0.9rem; }
+    .profile-button-header-round { width: 35px; height: 35px; margin-left: 10px;}
+
+    /* .book-grid columns are handled by their own multi-breakpoint rules */
+    .book-card { padding: 12px; }
+    .book-image { width: 75%; max-width: 100px; }
+    .book-title { font-size: 0.85rem; min-height: 2.5em; }
+    .star { width: 14px; height: 14px; }
+    .detail-button { height: 30px; font-size: 0.8rem; }
+    .new-arrival-image { max-height: 100px; }
+}
+
+@media (max-width: 767px) { /* Mobile */
+    /* Penyesuaian untuk #dashboard-container dan .main-content agar sidebar mobile berfungsi */
+    #dashboard-container { flex-direction: column; }
+    .main-content { margin-left: 0; width: 100%; }
+    .page-content-area { padding: 20px 15px; }
+
+    .page-main-title { font-size: 1.6rem; text-align: center; margin-bottom: 20px; }
+    .hero-section { width: 100%; padding: 20px 15px; border-radius: 20px; margin-bottom: 20px;}
+    .hero-text-container { padding: 15px; border-radius: 20px; }
+    .hero-text { font-size: 1rem; }
+    .section-title { font-size: 1.4rem; text-align: center; padding-left: 0; }
+    
+    .book-image { width: 80%; max-width: 90px; }
+    .book-title { font-size: 0.75rem; min-height: 2.4em; }
+    .star {width: 12px; height: 12px;}
+    .detail-button { height: 28px; font-size: 0.7rem; padding: 0 10px; width: 100%; max-width: 100px;}
+
+    .new-arrivals-section { padding: 20px 15px; border-radius: 20px; margin-bottom: 20px;}
+    .new-arrival-images { gap: 10px;}
+    .new-arrival-image { max-height: 90px; }
+
+    .search-fab { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+    .search-fab .icon { width: 25px; height: 25px; }
+
+    .main-header {
+        width: 100%; margin-left: 0; padding: 10px 0px; /* Padding horizontal dari .page-content-area */
+        justify-content: center; box-shadow: none; border-bottom: 1px solid #eee;
+    }
+    .header-buttons { gap: 10px; }
+    .header-button { padding: 8px 15px; font-size: 0.85rem; }
+    .profile-button-header-round { width: 32px; height: 32px; margin-left: 10px;}
+}
+
+@media (max-width: 480px) { /* Very small mobile devices */
+    .page-content-area { padding: 15px 10px; }
+    .page-main-title { font-size: 1.4rem; }
+    .section-title { font-size: 1.2rem;}
+    .hero-section { padding: 15px; border-radius: 15px; }
+    .hero-text-container { padding: 10px; border-radius: 15px;}
+    .hero-text { font-size: 0.9rem;}
+
+    /* .book-grid sudah diatur 1 kolom oleh @media (min-width: 481px) yang tidak terpenuhi */
+    .book-card { padding: 10px;}
+    .book-image { max-width: 80px;}
+    .book-title { font-size: 0.7rem; min-height: 2.2em;}
+    .star {width: 10px; height: 10px;}
+    .detail-button { height: 26px; font-size: 0.65rem;}
+
+    .new-arrivals-section { padding: 15px; border-radius: 15px;}
+    .new-arrival-image { max-height: 80px;}
+}
