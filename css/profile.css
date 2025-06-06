@@ -1,0 +1,373 @@
+/* General Layout & Background */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: F5EEE1;
+    color: #2C3E50;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+/* Container utama untuk seluruh konten profil */
+.page-content-area {
+    padding: 30px; /* Padding atas dan bawah untuk seluruh konten */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Jarak antar section */
+    margin: 0 40px; /* Margin samping untuk memberi sedikit ruang dari tepi layar */
+}
+
+/* Header Profil Section */
+.profile-header-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: #FFFFFF; /* Latar belakang putih untuk section ini */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.profile-avatar-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 3px solid #EAEAEA;
+}
+
+.profile-summary-text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.profile-summary-text h2 {
+    font-size: 2.2em;
+    color: #2C3E50;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.profile-summary-text p {
+    font-size: 1.0em;
+    color: #7F7F7F;
+    margin: 0 0 15px 0;
+}
+
+.profile-edit-button-header {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    border: none;
+}
+.profile-edit-button-header:hover { background-color: #0056b3; }
+
+.books-loaned-card {
+    background-color: #F8F7F4;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.03);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 180px;
+    flex-shrink: 0;
+    border: 1px solid #EAEAEA;
+}
+.books-loaned-card h3 {
+    font-size: 1.1em;
+    color: #7F7F7F;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.books-loaned-card .count {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #2C3E50;
+}
+.books-loaned-card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+/* Detail Informasi Section */
+.profile-details-section {
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profile-details-section h3 {
+    font-size: 1.5em;
+    color: #2C3E50;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.profile-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.profile-details-grid .detail-item {
+    display: flex;
+    flex-direction: column;
+}
+.profile-details-grid .detail-item label {
+    font-size: 0.9em;
+    color: #7F7F7F;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+.profile-details-grid .detail-item span {
+    font-size: 1.1em;
+    color: #2C3E50;
+    font-weight: 500;
+    word-break: break-word;
+    border: 1px solid transparent;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #F8F7F4;
+}
+
+/* Gaya untuk mode edit */
+.profile-details-grid.edit-mode .detail-item input[type="text"],
+.profile-details-grid.edit-mode .detail-item input[type="email"],
+.profile-details-grid.edit-mode .detail-item input[type="date"],
+.profile-details-grid.edit-mode .detail-item select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1em;
+    color: #2C3E50;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.profile-details-grid.edit-mode .detail-item input[readonly] {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
+
+.profile-details-grid.edit-mode .detail-item .file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.profile-details-grid.edit-mode .detail-item .file-input-wrapper input[type="file"] {
+    display: none;
+}
+
+.profile-details-grid.edit-mode .detail-item .file-input-wrapper .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #e9e9e9;
+    color: #333;
+    flex-shrink: 0;
+}
+.profile-details-grid.edit-mode .detail-item .file-input-wrapper .custom-file-upload:hover {
+    background-color: #d9d9d9;
+}
+.profile-details-grid.edit-mode .detail-item .file-input-wrapper #file-name {
+    font-size: 0.9em;
+    color: #555;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #EAEAEA;
+}
+
+.form-actions button, .form-actions a {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.form-actions .save-button {
+    background-color: #007BFF;
+    color: white;
+}
+.form-actions .save-button:hover {
+    background-color: #0056b3;
+}
+
+.form-actions .cancel-button {
+    background-color: #dc3545;
+    color: white;
+}
+.form-actions .cancel-button:hover {
+    background-color: #c82333;
+}
+
+/* Contact Info Section */
+.contact-info-section {
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.contact-info-item {
+    background-color: #F8F7F4;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #EAEAEA;
+}
+.contact-info-item h4 {
+    font-size: 1.1em;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+.contact-info-item p, .contact-info-item ul {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.contact-info-item ul li { margin-bottom: 5px; }
+.contact-info-item ul li strong { color: #333; }
+.contact-info-item ul li a { color: #007bff; text-decoration: none; }
+.contact-info-item ul li a:hover { text-decoration: underline; }
+
+/* Footer */
+.main-footer-profile {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    color: #7F7F7F;
+    font-size: 0.9em;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 900px) {
+    .page-content-area {
+        padding: 20px;
+        margin: 0 20px;
+    }
+    .profile-header-section,
+    .profile-details-section,
+    .contact-info-section {
+        padding: 30px;
+    }
+    .profile-header-section {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 20px;
+        justify-content: center;
+    }
+    .profile-summary-text {
+        align-items: center;
+    }
+    .books-loaned-card {
+        margin-left: 0;
+        width: 100%;
+        max-width: 250px;
+    }
+    .profile-details-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-info-section {
+        grid-template-columns: 1fr;
+    }
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-actions button, .form-actions a {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+    .page-content-area { padding: 15px; margin: 0 15px; }
+    .profile-header-section,
+    .profile-details-section,
+    .contact-info-section { padding: 20px; border-radius: 15px; }
+    .profile-avatar-large { width: 100px; height: 100px; }
+    .profile-summary-text h2 { font-size: 1.8em; }
+    .profile-summary-text p { font-size: 0.9em; }
+    .profile-edit-button-header { padding: 8px 20px; font-size: 0.9em; }
+    .books-loaned-card { padding: 15px; }
+    .books-loaned-card .count { font-size: 2.5em; }
+    .books-loaned-card img { width: 40px; height: 40px; }
+    .profile-details-section h3 { font-size: 1.3em; margin-bottom: 15px; }
+    .profile-details-grid .detail-item label { font-size: 0.8em; }
+    .profile-details-grid .detail-item span,
+    .profile-details-grid.edit-mode .detail-item input,
+    .profile-details-grid.edit-mode .detail-item select { font-size: 1em; }
+    .contact-info-item { padding: 15px; border-radius: 8px; }
+    .contact-info-item h4 { font-size: 1em; }
+    .contact-info-item p, .contact-info-item ul { font-size: 0.85em; }
+    .main-footer-profile { font-size: 0.8em; padding: 15px; }
+    .profile-details-grid.edit-mode .detail-item .file-input-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .profile-details-grid.edit-mode .detail-item .file-input-wrapper .custom-file-upload {
+        width: 100%;
+        text-align: center;
+    }
+}
