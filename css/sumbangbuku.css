@@ -1,0 +1,423 @@
+/* --- Font Imports --- */
+/* Pastikan ini ada di globals.css atau di head html, atau sertakan di sini jika file ini satu-satunya yang pakai Outfit */
+/* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@400;700&display=swap'); */
+
+/* --- General Layout & Background --- */
+body {
+    background-color: #F5EEE1; /* Latar belakang body sesuai Figma */
+    font-family: 'Outfit', sans-serif; /* Menggunakan Outfit sebagai font utama */
+    color: #000000; /* Warna teks default hitam */
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Penyesuaian area konten utama */
+.main-content-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+.page-content-area {
+    padding: 30px; /* Padding di sekitar main-container */
+    display: flex;
+    justify-content: center; /* Pusatkan horizontal */
+    align-items: flex-start; /* Elemen di dalamnya mulai dari atas */
+    min-height: calc(100vh - 100px); /* Kurangi tinggi header/footer jika ada */
+    box-sizing: border-box; /* Pastikan padding tidak menambah tinggi */
+}
+
+/* --- Main Container untuk Form dan Konfirmasi --- */
+.sumbang-buku-main-container {
+    display: flex;
+    gap: 50px; /* Jarak antara form dan area konfirmasi */
+    background-color: #F5EEE1; /* Latar belakang sama dengan body, sebagai wadah besar */
+    padding: 0;
+    position: relative;
+    width: 100%;
+    max-width: 1200px; /* Batasi lebar keseluruhan layout */
+    justify-content: center; /* Untuk menengahkan form di tengah halaman saat hanya form yang tampil */
+}
+
+/* --- Section Form Sumbang Buku --- */
+.sumbang-buku-form-section {
+    background-color: #FFFFFF; /* Latar belakang form putih */
+    padding: 40px;
+    border-radius: 5px; /* Sudut membulat sesuai Figma */
+    box-shadow: none; /* Hapus bayangan jika tidak ada di Figma */
+    border: 1px solid #E0E0E0; /* Border tipis jika diperlukan, disesuaikan Figma */
+    flex-shrink: 0; /* Jangan menyusut */
+    width: 661px; /* Lebar tetap sesuai Figma */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Pusatkan judul dan form */
+}
+
+.form-title {
+    font-family: "Outfit", sans-serif; /* Menggunakan Outfit */
+    font-weight: 700;
+    font-size: 32px;
+    color: #000000;
+    margin-bottom: 30px;
+    text-align: left; /* Rata kiri sesuai Figma */
+    width: 100%; /* Agar rata kiri */
+}
+
+/* Form inputs (group, overlap-group, text-wrapper-X pada Figma) */
+#sumbangForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Jarak antar form-group */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-family: "Outfit", sans-serif; /* Menggunakan Outfit */
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 11px 15px;
+    border: 1px solid #000000; /* Border hitam */
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Outfit", sans-serif; /* Menggunakan Outfit */
+    color: #000000;
+    background-color: #FFFFFF;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group textarea::placeholder {
+    color: #000000;
+    opacity: 0.7;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.form-group textarea {
+    min-height: 115px;
+    resize: vertical;
+}
+
+/* --- Rating Stars Input --- */
+.rating-input-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.rating-input-group .star-input {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.1s ease;
+}
+.rating-input-group .star-input:hover {
+    transform: scale(1.1);
+}
+
+/* --- File Upload Styling (Custom Look for file input) --- */
+.file-upload-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+    height: 38px;
+    box-sizing: border-box;
+}
+.file-upload-wrapper input[type="file"] {
+    display: none;
+}
+.custom-file-button {
+    background-color: #D5E7FF;
+    color: #000000;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Outfit", sans-serif; /* Menggunakan Outfit */
+    transition: background-color 0.3s ease;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.custom-file-button:hover {
+    background-color: #B2D7FF;
+}
+.file-name-display {
+    flex-grow: 1;
+    color: #555;
+    font-size: 0.95em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: "Outfit", sans-serif; /* Menggunakan Outfit */
+}
+
+/* --- Form Buttons (Submit and Reset) --- */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.form-buttons button {
+    padding: 10px 25px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Outfit", sans-serif; /* Menggunakan Outfit */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button {
+    background-color: #D5E7FF;
+    color: #000000;
+}
+.submit-button:hover {
+    background-color: #B2D7FF;
+    transform: translateY(-2px);
+}
+
+.reset-button {
+    background-color: #D5E7FF;
+    color: #000000;
+}
+.reset-button:hover {
+    background-color: #B2D7FF;
+    transform: translateY(-2px);
+}
+
+/* --- Confirmation Section --- */
+.confirmation-section {
+    width: 443px; /* Lebar area konfirmasi sesuai Figma */
+    height: auto; /* Tinggi disesuaikan konten */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.confirmation-section.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.confirmation-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    /* Tidak ada background atau border spesifik di Figma untuk div ini */
+}
+
+.checkmark-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+.text-wrapper-thanks {
+    font-family: "Outfit", sans-serif; /* Menggunakan Outfit */
+    font-weight: 700;
+    color: #000000;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+.confirmation-message p {
+    font-family: "Outfit", sans-serif; /* Menggunakan Outfit */
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+}
+.confirmation-message .back-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+.confirmation-message .back-button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Feedback messages (success/error) --- */
+.form-feedback {
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif; /* Menggunakan Outfit */
+}
+.form-feedback.success {
+    background-color: #e6ffed;
+    color: #006422;
+    border: 1px solid #9fddb3;
+}
+.form-feedback.error {
+    background-color: #ffebeb;
+    color: #d32f2f;
+    border: 1px solid #ffcdd2;
+}
+
+/* --- Sidebar Active Item Style --- */
+/* Ini harus di style.css atau globals.css jika berlaku global */
+.sidebar-menu-item.active .NURA-wrapper .NURA-3 {
+    color: #007BFF !important;
+}
+.sidebar-menu-item.active img {
+    filter: brightness(0) saturate(100%) invert(39%) sepia(87%) saturate(2853%) hue-rotate(200deg) brightness(102%) contrast(105%);
+}
+
+
+/* --- Media Queries untuk Responsivitas --- */
+@media (max-width: 1200px) {
+    /* Ketika layar mulai menyempit, stack form dan konfirmasi */
+    .sumbang-buku-main-container {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center; /* Pusatkan form dan konfirmasi saat di stack */
+        max-width: 700px; /* Batasi lebar keseluruhan */
+    }
+    .sumbang-buku-form-section,
+    .confirmation-section {
+        width: 100%; /* Ambil lebar penuh container */
+        max-width: 661px; /* Pertahankan lebar form asli jika memungkinkan */
+        height: auto; /* Biarkan tinggi menyesuaikan konten */
+    }
+    .confirmation-section {
+        padding-top: 50px; /* Beri jarak di atas konfirmasi jika di stack */
+    }
+}
+
+@media (max-width: 768px) {
+    .page-content-area {
+        padding: 20px;
+    }
+    .sumbang-buku-form-section {
+        padding: 30px;
+    }
+    .form-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+    #sumbangForm {
+        gap: 15px;
+    }
+    .form-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .form-buttons button {
+        width: 100%;
+        max-width: 250px;
+    }
+    .confirmation-section {
+        width: 100%;
+        max-width: 400px; /* Batasi lebar konfirmasi */
+    }
+    .text-wrapper-thanks {
+        font-size: 28px;
+    }
+    .confirmation-message p {
+        font-size: 16px;
+    }
+    .checkmark-icon {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-content-area {
+        padding: 15px;
+    }
+    .sumbang-buku-form-section {
+        padding: 20px;
+    }
+    .form-title {
+        font-size: 24px;
+    }
+    .form-group label,
+    .form-group input,
+    .form-group textarea,
+    .custom-file-button,
+    .file-name-display,
+    .form-buttons button {
+        font-size: 14px;
+    }
+    .form-group input,
+    .form-group textarea {
+        padding: 10px 12px;
+    }
+    .rating-input-group .star-input {
+        width: 20px;
+        height: 20px;
+    }
+    .custom-file-button {
+        padding: 6px 12px;
+    }
+    .text-wrapper-thanks {
+        font-size: 24px;
+    }
+    .confirmation-message p {
+        font-size: 14px;
+    }
+    .checkmark-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
