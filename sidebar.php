@@ -84,8 +84,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 /* --- Sidebar Styling --- */
 .sidebar {
     width: 250px; /* Default width */
-    background-color: #2c3e50; /* Darker background */
-    color: #ecf0f1;
+    background-color: #003160; /* Darker background */
+    color: #ffffff; /* **TEKS UMUM DI SIDEBAR JADI PUTIH** */
     padding: 20px 15px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -149,11 +149,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     background: none;
     border: none;
     cursor: pointer;
-    /* Increased padding to enlarge the clickable area and background */
     padding: 10px;
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    /* Ensure the button itself is centered */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,13 +165,13 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 .sidebar-toggle .chevrons-left-icon {
     width: 24px;
     height: 24px;
-    filter: invert(100%); /* Make icon white */
+    filter: invert(100%); /* **IKON INI TETAP PUTIH** */
     transition: transform 0.3s ease;
 }
 
 /* Rotate toggle icon when sidebar is collapsed */
 .sidebar.collapsed .sidebar-toggle .chevrons-left-icon {
-    transform: rotate(180deg); /* Rotates the 'chevrons-left' (<<) icon to become 'chevrons-right' (>>) */
+    transform: rotate(180deg);
 }
 
 /* Navigation menu */
@@ -202,7 +200,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     display: flex;
     align-items: center;
     padding: 12px 15px;
-    color: #ecf0f1;
+    color: #ffffff; /* **TEKS MENU JADI PUTIH** */
     text-decoration: none;
     font-size: 16px;
     border-radius: 8px;
@@ -212,7 +210,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 }
 
 .sidebar.collapsed .menu-item a {
-    /* Center icons when text is hidden */
     justify-content: center;
     padding: 12px 0; /* Adjust padding for collapsed state to center */
 }
@@ -226,7 +223,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 .menu-item.active a {
     background-color: #3498db; /* Blue for active state */
     font-weight: bold;
-    color: #ffffff;
+    color: #ffffff; /* **TEKS AKTIF JADI PUTIH** */
 }
 
 /* Icons */
@@ -234,7 +231,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     width: 20px;
     height: 20px;
     margin-right: 15px;
-    filter: invert(100%); /* Make icons white */
+    filter: invert(100%); /* **IKON MENU DAN LOGOUT JADI PUTIH** */
     flex-shrink: 0; /* Prevent icon from shrinking */
     transition: margin-right 0.3s ease;
 }
@@ -275,7 +272,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 .submenu-item a {
     padding: 8px 15px;
     font-size: 14px;
-    color: #bdc3c7; /* Lighter color for submenu items */
+    color: #ffffff; /* **TEKS SUBMENU JADI PUTIH** */
 }
 
 .submenu-item a:hover {
@@ -294,7 +291,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     display: flex;
     align-items: center;
     padding: 12px 15px;
-    color: #e74c3c; /* Red for logout */
+    color: #ffffff; /* **TEKS LOGOUT JADI PUTIH** */
     text-decoration: none;
     font-size: 16px;
     border-radius: 8px;
@@ -310,7 +307,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 }
 
 .logout-button:hover {
-    background-color: rgba(231, 76, 60, 0.2);
+    background-color: rgba(231, 76, 60, 0.2); /* Tetap merah transparan untuk hover */
     color: #ffffff;
 }
 
@@ -341,13 +338,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Handle submenu toggling (if you decide to implement actual submenus)
     menuItemsWithSubmenu.forEach(item => {
         item.addEventListener("click", function(event) {
-            // Prevent default link behavior only if it's a submenu toggle
-            // In your current setup, 'dashboard.php' is the link, so click will navigate
-            // If you want it to *only* toggle a submenu, use event.preventDefault()
-            // and separate the link action from the submenu toggle.
             const submenuId = this.id + "-submenu";
             const submenu = document.getElementById(submenuId);
             if (submenu) {
+                // Prevent default link behavior if you want to only toggle submenu
+                // event.preventDefault(); 
                 submenu.classList.toggle("active");
             }
         });
