@@ -25,7 +25,7 @@ $allUserData = [
 $is_logged_in = true; // Ganti dengan logika status login Anda, e.g., isset($_SESSION['user_id'])
 $current_user_id = 'user123'; // Ganti dengan ID pengguna dari sesi yang login
 
-$user_avatar = 'img/default-profile.png'; // Default avatar
+$user_avatar = 'img/profile.png'; // Default avatar
 if ($is_logged_in && isset($allUserData[$current_user_id]['avatar'])) {
     $user_avatar = $allUserData[$current_user_id]['avatar'];
 }
@@ -213,7 +213,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_book'])) {
                                 <p>Buku Anda telah berhasil ditambahkan ke koleksi kami.</p>
                                 <a href="dashboard.php" class="back-button">Kembali ke Dashboard</a>
                             </div>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -235,9 +235,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_book'])) {
                 function highlightStars(rating) {
                     stars.forEach((star, index) => {
                         if (index < rating) {
-                            star.src = 'img/Star.png';
+                            star.src = 'img/star.jpg';
                         } else {
-                            star.src = 'img/image.svg';
+                            star.src = 'img/star2.jpg';
                         }
                     });
                 }
