@@ -1,0 +1,640 @@
+/* css/Pencarian.css */
+
+/* --- Wrapper Halaman Pencarian --- */
+.pencarian-page-container {
+    max-width: 100%; /* Mengisi 100% dari parent (main-content yang sudah terpusat) */
+    margin: 0; /* Hapus margin auto di sini karena parent sudah terpusat */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0; /* Pastikan tidak ada padding yang mendorong konten */
+}
+
+/* --- Judul Halaman --- */
+.page-title-pencarian {
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* --- Pencarian Card (Kotak Putih Utama) --- */
+.pencarian-card {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 30px; /* Padding internal card */
+    box-sizing: border-box;
+}
+
+/* --- Form Pencarian & Filter --- */
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.search-and-filter-row {
+    display: flex;
+    justify-content: space-between; /* Menyebar elemen di baris ini */
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #d5e7ff;
+    border-radius: 25px;
+    padding: 0 15px;
+    height: 42px;
+    flex-grow: 1;
+    max-width: calc(100% - 135px); /* Total lebar 100% - (lebar tombol reset + gap) */
+    /* Ini akan membuat kolom pencarian memanjang, menyesuaikan lebar main-content */
+    min-width: 300px; /* Ukuran minimum agar tidak terlalu kecil */
+}
+
+.search-input-field {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    padding: 0 5px;
+    font-family: "Poppins", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 18px;
+    outline: none;
+}
+
+.search-input-field::placeholder {
+    color: #000000;
+    opacity: 0.7;
+}
+
+.search-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.2s ease-in-out;
+    color: #000000;
+}
+
+.search-button:hover {
+    transform: scale(1.1);
+}
+
+.search-button .material-icons {
+    font-size: 24px;
+}
+
+.reset-filter-button, .apply-filter-button {
+    background-color: #6C757D;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+    min-width: 120px; /* Ukuran minimum agar tombol konsisten */
+    max-width: 150px; /* Batasi ukuran maksimum agar tidak terlalu besar */
+    width: auto;
+}
+
+.reset-filter-button:hover {
+    background-color: #5A6268;
+}
+
+.apply-filter-button {
+    background-color: #007BFF;
+}
+.apply-filter-button:hover {
+    background-color: #0056b3;
+}
+
+
+.filter-options-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+    min-width: 150px;
+}
+
+.filter-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2C3E50;
+    white-space: nowrap;
+}
+
+.filter-select {
+    padding: 10px 15px;
+    border: 1px solid #EAEAEA;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #2C3E50;
+    background-color: #FFFFFF;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%232C3E50" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.filter-select:focus {
+    border-color: #007BFF;
+}
+
+/* --- Wrapper Responsif Tabel (untuk overflow) --- */
+.table-responsive-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: inset 0 -2px 5px rgba(0,0,0,0.05);
+    border-radius: 15px;
+}
+
+/* --- Tabel Buku (Flexbox) --- */
+.books-table {
+    display: flex;
+    flex-direction: column;
+    min-width: 1000px; /* Lebar minimum tabel, diubah dari 900px menjadi 1000px */
+    border-collapse: collapse;
+    margin: 0 auto; /* Tengah tabel di dalam wrapper jika ada sisa ruang */
+}
+
+/* Header Tabel */
+.table-header-row {
+    background-color: #8cd7ff;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    padding: 0 10px;
+    height: 56px;
+    align-items: center;
+    font-family: "Poppins", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 16px;
+}
+
+.header-cell {
+    flex: 1;
+    text-align: center;
+    padding: 8px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 80px;
+}
+
+.header-cell.header-book {
+    flex: 2;
+    min-width: 200px;
+}
+.header-cell.header-action {
+    flex: 1.2;
+    min-width: 120px;
+}
+
+/* Baris Data Tabel */
+.table-data-row {
+    display: flex;
+    padding: 15px 10px;
+    border-bottom: 1px solid #EAEAEA;
+    align-items: center;
+    font-family: "Poppins", Helvetica;
+    font-weight: 500;
+    color: #2C3E50;
+}
+
+.table-data-row:last-child {
+    border-bottom: none;
+}
+
+.data-cell {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+}
+
+/* Gaya untuk Kolom Buku */
+.data-cell.data-book {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    min-width: 200px;
+}
+
+.book-thumbnail {
+    width: 60px;
+    height: 90px;
+    background-size: cover;
+    background-position: 50% 50%;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    flex-grow: 1;
+    min-width: 80px;
+}
+
+.book-title-small {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2C3E50;
+    word-break: break-word;
+    line-height: 1.3;
+}
+
+.book-author-small {
+    font-size: 12px;
+    color: #7F7F7F;
+    word-break: break-word;
+    line-height: 1.3;
+}
+
+/* Gaya untuk nilai data */
+.data-value {
+    background-color: #d5e7ff;
+    border-radius: 15px;
+    padding: 8px 12px;
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000000;
+}
+
+/* Gaya Status */
+.data-value.status-available { background-color: #C8E6C9; color: #388E3C; }
+.data-value.status-unavailable { background-color: #FFCDD2; color: #D32F2F; }
+
+/* Gaya Rating */
+.data-value.rating-stars {
+    background-color: transparent;
+    color: #FFC107;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    gap: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1;
+    height: 18px;
+}
+.rating-stars .material-icons {
+    font-size: 18px;
+    line-height: 1;
+    vertical-align: middle;
+}
+.rating-stars .star-filled { color: #FFC107; }
+.rating-stars .star-half { color: #FFC107; }
+.rating-stars .star-empty { color: #ccc; }
+
+/* Gaya Aksi */
+.data-cell.data-action {
+    flex: 1.2;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-button {
+    min-width: 100px;
+    max-width: 120px;
+    background-color: #007BFF;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: auto;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.action-button.detail-button {
+    background-color: #6C757D;
+}
+.action-button.detail-button:hover {
+    background-color: #5A6268;
+}
+
+.action-button.borrow-button {
+    background-color: #28A745;
+}
+.action-button.borrow-button:hover {
+    background-color: #218838;
+}
+
+.disabled-button {
+    background-color: #E0E0E0;
+    color: #888;
+    cursor: not-allowed;
+}
+
+/* Pesan tidak ada hasil */
+.no-results-message {
+    text-align: center;
+    padding: 30px 15px;
+    font-size: 1.2em;
+    color: #555;
+    background-color: #f0f0f0;
+    border-radius: 0 0 15px 15px;
+    margin-top: -1px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+
+/* --- Responsiveness --- */
+@media (max-width: 1024px) {
+    .pencarian-page-container {
+        width: 100%; /* Mengisi 100% dari .main-content */
+    }
+    .page-title-pencarian {
+        font-size: 28px;
+    }
+    .search-input-wrapper {
+        max-width: calc(100% - 135px); /* Tetap relevan */
+        min-width: 250px; /* Sesuaikan min-width di tablet */
+    }
+    .search-input-field {
+        font-size: 16px;
+    }
+
+    .books-table {
+        min-width: 800px;
+    }
+    .header-cell, .data-cell {
+        font-size: 14px;
+        min-width: 70px;
+    }
+    .header-cell.header-book, .data-cell.data-book {
+        min-width: 180px;
+    }
+    .header-cell.header-action, .data-cell.data-action {
+        min-width: 100px;
+    }
+    .book-thumbnail {
+        width: 50px;
+        height: 75px;
+    }
+    .book-title-small { font-size: 13px; }
+    .book-author-small { font-size: 11px; }
+    .data-value {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+    .rating-stars .material-icons {
+        font-size: 16px;
+    }
+    .action-button {
+        font-size: 13px;
+        padding: 6px 10px;
+        min-width: 90px;
+        max-width: 110px;
+    }
+
+    .filter-options-row {
+        gap: 10px;
+    }
+    .filter-group {
+        min-width: 120px;
+    }
+    .filter-group label {
+        font-size: 13px;
+    }
+    .filter-select {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+    .reset-filter-button, .apply-filter-button {
+        font-size: 13px;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 15px;
+    }
+    .page-title-pencarian {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .filter-form {
+        gap: 15px;
+    }
+    .search-and-filter-row {
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .search-input-wrapper {
+        max-width: 100%;
+    }
+    .reset-filter-button {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .filter-options-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .filter-group {
+        min-width: unset;
+        width: 100%;
+    }
+    .apply-filter-button {
+        width: 100%;
+        max-width: 200px;
+        align-self: center;
+    }
+
+    .books-table {
+        min-width: 100%;
+        display: block;
+    }
+    .table-responsive-wrapper {
+        overflow-x: auto;
+    }
+
+    /* Transformasi Baris Data menjadi Tumpukan untuk Mobile */
+    .table-header-row {
+        display: none;
+    }
+    .table-data-row {
+        flex-direction: column;
+        align-items: flex-start;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .table-data-row:last-child { border-bottom: 1px solid #ddd; }
+
+    .data-cell {
+        width: 100%;
+        text-align: left;
+        padding: 5px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Menambahkan label dari data-label */
+    .data-cell::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #555;
+        margin-right: 10px;
+        flex-shrink: 0;
+        min-width: 70px;
+        text-align: left;
+    }
+
+    .data-cell.data-book {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed #eee;
+        margin-bottom: 10px;
+        flex-basis: auto;
+    }
+    .data-cell.data-book::before {
+        content: "";
+        margin-right: 0;
+        min-width: unset;
+    }
+
+    .book-thumbnail {
+        width: 70px;
+        height: 100px;
+        margin-right: 15px;
+    }
+    .book-details {
+        flex-grow: 1;
+        text-align: left;
+        min-width: unset;
+    }
+    .book-title-small { font-size: 15px; }
+    .book-author-small { font-size: 13px; }
+
+    .data-value {
+        background-color: transparent;
+        border-radius: 0;
+        padding: 0;
+        font-size: 14px;
+        white-space: normal;
+        text-align: right;
+        flex-grow: 1;
+    }
+    /* Warna untuk status di mobile (teks langsung) */
+    .data-value.status-available { color: #388E3C; }
+    .data-value.status-unavailable { color: #D32F2F; }
+
+    .data-value.rating-stars {
+        justify-content: flex-end;
+    }
+
+    .data-cell.data-action {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding-top: 10px;
+        border-top: 1px dashed #eee;
+        margin-top: 5px;
+        flex-basis: auto;
+    }
+    .data-cell.data-action::before {
+        content: "Aksi:";
+        min-width: 70px;
+    }
+    .action-button {
+        width: auto;
+        flex-grow: 1;
+        max-width: 120px;
+        min-width: unset;
+    }
+
+    .no-results-message {
+        border-radius: 8px;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title-pencarian { font-size: 20px; }
+    .search-input-field { font-size: 14px; }
+    .search-button .material-icons { font-size: 20px; }
+
+    .book-thumbnail { width: 50px; height: 75px; }
+    .book-title-small { font-size: 13px; }
+    .book-author-small { font-size: 11px; }
+
+    .data-value { font-size: 12px; }
+    .rating-stars .material-icons { font-size: 14px; }
+    .action-button { font-size: 12px; padding: 6px 10px; }
+
+    .data-cell::before { font-size: 11px; min-width: 60px; }
+}
