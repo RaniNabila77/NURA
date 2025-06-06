@@ -1,16 +1,68 @@
 <?php
-// login.php
+session_start(); // Selalu mulai sesi di awal file PHP
+
+$message = ""; // Variabel untuk menyimpan pesan error atau sukses
+$message_type = ""; // 'error' atau 'info'
+
+// --- Data Pengguna Dummy ---
+// Dalam aplikasi nyata, data ini akan diambil dari database.
+// Untuk tujuan demonstrasi dan mempertahankan desain, kita gunakan array ini.
+// Key adalah email (sebagai username), value adalah array data pengguna.
+$users = [
+    'user@example.com' => [
+        'password' => 'password123', // Password yang benar
+        'user_id' => 'user123',      // ID unik pengguna
+        'user_name' => 'Nura Aulia Fitri', // Nama lengkap pengguna
+        'avatar' => 'img/default-profile.png', // Path avatar
+    ],
+    'admin@perpus.com' => [
+        'password' => 'admin123',
+        'user_id' => 'admin456',
+        'user_name' => 'Admin Perpustakaan',
+        'avatar' => 'img/admin-profile.png',
+    ],
+];
+
 // Periksa apakah form telah disubmit (tombol login ditekan)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Di sini seharusnya ada proses validasi email dan password.
-    // Karena belum ada implementasi database atau autentikasi,
-    // kita akan langsung redirect ke dashboard.php.
-    // Contoh data yang bisa diambil (jika diperlukan untuk validasi nanti):
-    // $email = $_POST['email_login'] ?? '';
-    // $password = $_POST['password_login'] ?? '';
+    $email = $_POST['email_login'] ?? '';
+    $password = $_POST['password_login'] ?? '';
 
-    header("Location: dashboard.php");
-    exit; // Pastikan tidak ada output lain setelah header redirect
+    // Validasi sederhana: pastikan email dan password tidak kosong
+    if (empty($email) || empty($password)) {
+        $message = "Email dan password wajib diisi.";
+        $message_type = "error";
+    } elseif (isset($users[$email]) && $users[$email]['password'] === $password) {
+        // --- LOGIN BERHASIL ---
+        $_SESSION['user_id'] = $users[$email]['user_id'];
+        $_SESSION['user_name'] = $users[$email]['user_name'];
+        // Anda juga bisa menyimpan avatar atau data lain yang sering diakses di sesi
+        $_SESSION['user_avatar'] = $users[$email]['avatar']; 
+
+        // Cek apakah ada URL yang tersimpan untuk redirect setelah login
+        if (isset($_SESSION['redirect_message_after_login'])) {
+            $redirect_url = $_SESSION['redirect_message_after_login'];
+            unset($_SESSION['redirect_message_after_login']); // Hapus URL redirect dari sesi
+            header("Location: " . $redirect_url); // Redirect ke halaman yang diminta sebelumnya
+            exit;
+        } else {
+            // Jika tidak ada URL redirect khusus, arahkan ke dashboard
+            header("Location: dashboard.php");
+            exit;
+        }
+    } else {
+        // --- LOGIN GAGAL ---
+        $message = "Email atau password salah.";
+        $message_type = "error";
+    }
+}
+
+// Cek apakah ada pesan informasi yang dikirim dari halaman lain (misalnya dari peminjaman.php)
+$redirect_info_message = '';
+if (isset($_SESSION['redirect_message'])) {
+    $redirect_info_message = $_SESSION['redirect_message'];
+    unset($_SESSION['redirect_message']); // Hapus pesan setelah ditampilkan
+    $message_type = "info"; // Set tipe pesan menjadi info
 }
 ?>
 <!DOCTYPE html>
@@ -21,6 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login - Perpustakaan Nura</title>
     <link rel="stylesheet" href="css/globals.css" />
     <link rel="stylesheet" href="css/login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="login">
@@ -29,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="rectangle"> 
                     
                     <div class="login-left-panel">
-                        <img class="logo" src="img/logo.png" alt="Logo Perpustakaan Nura" />
+                        <img class="logo" src="img/Logo.png" alt="Logo Perpustakaan Nura" />
                         <div class="group">
                             <p class="selamat-datang-login">Selamat Datang <br />Login Untuk Peminjaman Di Perpustakaan Nura</p>
                         </div>
@@ -37,9 +92,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <div class="login-right-panel">
                         <form class="form-register" method="POST" action="login.php"> 
+                            <?php if (!empty($message)): ?>
+                                <div class="message <?php echo $message_type; ?>">
+                                    <?php echo htmlspecialchars($message); ?>
+                                </div>
+                            <?php endif; ?>
+
                             <div class="input-field">
                                 <label for="email_login" class="label">Email</label>
-                                <input id="email_login" name="email_login" class="input" placeholder="library@gmail.com" type="email" required />
+                                <input id="email_login" name="email_login" class="input" placeholder="library@gmail.com" type="email" required value="<?php echo htmlspecialchars($_POST['email_login'] ?? ''); ?>" />
                             </div>
 
                             <div class="input-field">
