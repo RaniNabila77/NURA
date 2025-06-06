@@ -1,82 +1,118 @@
-/* --- Global Styles & Font Import (Dipertahankan jika dashboard membutuhkannya) --- */
+/* --- Global Styles & Font Import --- */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
 body {
-    margin: 0; padding: 0; font-family: 'Outfit', sans-serif;
-    background-color: #f5eee1; line-height: 1.6; color: #333;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    background-color: #f5eee1;
+    line-height: 1.6;
+    color: #333;
     overflow-x: hidden; /* Mencegah scrollbar horizontal yang tidak diinginkan */
 }
 
 a {
-    text-decoration: none; color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
-/* --- Main Layout: Dashboard Container (Berlaku untuk Dashboard) --- */
-#dashboard-container {
+/* --- App Container (Menggantikan #dashboard-container) --- */
+.app-container {
     display: flex;
     min-height: 100vh;
     background-color: #f5eee1;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    position: relative; /* Penting untuk penempatan absolut atau fixed di dalamnya jika dibutuhkan */
+    /* Transition untuk app-container jika ada perubahan layout besar */
+    transition: margin-left 0.3s ease; /* Mungkin tidak diperlukan jika main-content-area yang bergerak */
 }
 
-/* --- Main Content Area Styles (Berlaku untuk Dashboard) --- */
-.main-content {
+/* --- Main Content Area Styles --- */
+.main-content-area {
     flex-grow: 1;
-    margin-left: 225px; /* Default untuk sidebar terbuka */
-    width: calc(100% - 225px);
+    margin-left: 225px; /* Default untuk sidebar terbuka (lebar sidebar penuh) */
+    width: calc(100% - 225px); /* Lebar konten utama */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    /* Transisi untuk perubahan margin-left dan width agar mulus */
     transition: margin-left 0.3s ease, width 0.3s ease;
-    min-width: 0; /* Penting untuk flex item agar tidak overflow */
+    min-width: 0; /* Penting agar flex item tidak overflow pada layar kecil */
     box-sizing: border-box;
 }
-#dashboard-container.sidebar-collapsed .main-content {
+
+/* Saat body memiliki kelas sidebar-closed, atur main-content-area */
+body.sidebar-closed .main-content-area {
     margin-left: 60px; /* Lebar sidebar ciut */
-    width: calc(100% - 60px);
+    width: calc(100% - 60px); /* Lebar konten utama menyesuaikan */
 }
 
-/* Page content area akan memiliki padding yang menentukan margin konten */
-.page-content-area {
+/* Wrapper untuk konten halaman */
+.page-content-wrapper {
     flex-grow: 1;
-    padding: 30px; /* Ini adalah padding yang akan kita sejajarkan */
+    padding: 30px;
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Memberikan jarak antar section */
 }
 
-/* --- Main Header (Login/Register & Profile Button) Styles --- */
+/* --- Main Header Styles --- */
 .main-header {
-    width: 100%; /* Header mengambil seluruh lebar main-content */
-    padding: 15px 30px; /* Padding ini yang menyelaraskan dengan konten di bawahnya */
+    width: 100%;
+    padding: 15px 30px;
     display: flex;
-    justify-content: flex-end; /* Dorong semua elemen ke kanan */
+    justify-content: space-between;
     align-items: center;
-    background-color: transparent; /* Transparan agar warna background body terlihat */
-    margin-bottom: 20px; /* Jarak antara header dan konten di bawahnya */
-    box-sizing: border-box; /* Pastikan padding dihitung dalam lebar */
+    background-color: transparent;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-/* Jika Anda ingin elemen di kiri header, gunakan ini */
-.header-left {
-    flex-grow: 1; /* Mengambil sisa ruang untuk mendorong header-right ke kanan */
+.page-main-title {
+    font-size: 2.2rem;
+    color: #003160;
+    font-weight: 700;
+    margin: 0;
+    flex-shrink: 0;
 }
 
-.header-right {
+.search-profile-section {
     display: flex;
     align-items: center;
-    gap: 15px; /* Jarak antar tombol/profil di kanan */
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+.search-icon-container {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.search-icon-container:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.search-icon {
+    width: 24px;
+    height: 24px;
 }
 
 .header-buttons {
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
+
 .header-button {
     display: inline-block;
     padding: 10px 20px;
@@ -86,232 +122,504 @@ a {
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap;
 }
-.login-button { background-color: #1b3b6f; color: #ffffff; border: 1px solid #1b3b6f; }
-.login-button:hover { background-color: #003160; box-shadow: 0 2px 8px rgba(27, 59, 111, 0.4); }
-.register-button { background-color: #ffffff; color: #1b3b6f; border: 1px solid #1b3b6f; }
-.register-button:hover { background-color: #e0e0e0; box-shadow: 0 2px 8px rgba(27, 59, 111, 0.2); }
 
-/* Gaya khusus untuk tombol profil bulat */
+.login-button {
+    background-color: #1b3b6f;
+    color: #ffffff;
+    border: 1px solid #1b3b6f;
+}
+
+.login-button:hover {
+    background-color: #003160;
+    box-shadow: 0 2px 8px rgba(27, 59, 111, 0.4);
+}
+
+.register-button {
+    background-color: #ffffff;
+    color: #1b3b6f;
+    border: 1px solid #1b3b6f;
+}
+
+.register-button:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 2px 8px rgba(27, 59, 111, 0.2);
+}
+
 .profile-button-header-round {
-    display: block; /* Agar width/height berfungsi */
+    display: block;
     width: 40px;
     height: 40px;
-    border-radius: 50%; /* Membuatnya bulat */
-    overflow: hidden; /* Memastikan gambar tetap di dalam lingkaran */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12); /* Efek bayangan */
-    background-color: #e0e0e0; /* Warna latar belakang default jika gambar tidak ada */
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    background-color: #e0e0e0;
     cursor: pointer;
     transition: box-shadow 0.2s ease;
-    flex-shrink: 0; /* Penting: mencegah elemen ini menyusut di layar kecil */
+    flex-shrink: 0;
 }
+
 .profile-button-header-round img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Memastikan gambar mengisi seluruh area dan tidak terdistorsi */
+    object-fit: cover;
 }
+
 .profile-button-header-round:hover {
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Page Titles & Section Titles (Digunakan di Dashboard) --- */
-.page-main-title {
-    font-size: 2.2rem; color: #003160; margin-bottom: 30px;
-    text-align: center; font-weight: 700;
-}
-.section-title { /* Untuk judul section buku di dashboard */
-    font-size: 1.8rem; color: #bf7711; margin-top: 10px;
-    margin-bottom: 20px; text-align: left; width: 100%;
-    padding-left: 0px; font-weight: 600;
-}
-
-/* --- DASHBOARD PAGE SPECIFIC STYLES --- */
-.dashboard-top-layout {
-    display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 30px;
-}
-.dashboard-top-layout > .hero-section {
-    flex: 1 1 45%; min-width: 320px; margin: 0;
-}
-.dashboard-top-layout > .new-arrivals-section {
-    flex: 1 1 45%; min-width: 320px; width: auto;
+/* --- Section Titles --- */
+.section-title {
+    font-size: 1.8rem;
+    color: #bf7711;
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+    font-weight: 600;
+    padding-left: 20px;
 }
 
-.hero-section {
-    background-color: #1b3b6f; border-radius: 30px; padding: 30px;
-    display: flex; justify-content: center; align-items: center;
-    width: 100%; max-width: 700px;
+/* --- Dashboard Sections Layout --- */
+.top-dashboard-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
 }
-.hero-text-container {
-    background-color: #d5e7ff; border-radius: 30px; padding: 20px;
-    width: 100%; height: auto; display: flex; align-items: center;
-    justify-content: center; text-align: center;
-}
-.hero-text { font-size: 1.2rem; color: #2c2c2c; margin: 0; }
 
-.book-grid { /* Spesifik untuk dashboard */
-    width: 100%; padding: 20px; background-color: #ffffff;
-    border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: grid; gap: 20px; align-items: start; margin-bottom: 30px;
-    grid-template-columns: 1fr; /* Default untuk mobile terkecil */
+.hero-section-main,
+.new-arrivals-section-main {
+    flex: 1 1 45%;
+    min-width: 300px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-/* Kolom responsif untuk .book-grid dashboard */
-@media (min-width: 481px) { .book-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 768px) { .book-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1025px) { .book-grid { grid-template-columns: repeat(4, 1fr); } } /* 4 kolom di layar besar */
 
-.book-card { /* Spesifik untuk dashboard */
-    display: flex; flex-direction: column; align-items: center; text-align: center;
-    padding: 15px; background-color: #ffffff; border-radius: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08); height: 100%;
+.hero-section-main {
+    background-color: #1b3b6f;
+}
+
+.hero-text-container-main {
+    background-color: #d5e7ff;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    color: #2c2c2c;
+    margin: 0;
+}
+
+.new-arrivals-section-main .section-title {
+    color: #bf7711;
+    padding-left: 0;
+    text-align: center;
+}
+
+.new-arrival-images-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.new-arrival-item {
+    flex-shrink: 0;
+    width: 100px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.book-card:hover { transform: translateY(-5px); box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
-.book-image { /* Spesifik untuk dashboard */
-    width: 80%; max-width: 120px; height: auto; object-fit: cover; margin-bottom: 10px;
+
+.new-arrival-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.book-title { /* Spesifik untuk dashboard (h3) */
-    font-size: 0.9rem; margin-top: 5px; margin-bottom: 10px; width: 100%;
-    white-space: normal; font-weight: 600; color: #333;
-    line-height: 1.3; min-height: 2.6em; /* Ruang untuk 2 baris */
+
+.new-arrival-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
 }
-.book-author { /* Gaya untuk penulis di dashboard */
-    font-size: 0.8rem;
+
+/* --- Book Section Styles --- */
+.book-section {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 100%;
+}
+
+.book-grid {
+    display: grid;
+    gap: 20px;
+    width: 100%;
+    /* Default untuk mobile: auto-fill minmax untuk fleksibilitas */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.book-link-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.book-image {
+    width: 80%;
+    max-width: 120px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.book-title {
+    font-size: 0.95rem;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    width: 100%;
+    white-space: normal;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.3;
+    min-height: 2.6em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-author {
+    font-size: 0.85rem;
     color: #666;
     margin-bottom: 5px;
 }
-.star-rating { /* Spesifik untuk dashboard */
-    display: flex; justify-content: center; margin-top: 5px; margin-bottom: 10px;
+
+.star-rating {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
-.star { /* Spesifik untuk dashboard */
-    width: 16px; height: 16px; margin-right: 2px;
+
+.star {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
 }
-.rating-count-dashboard { /* Gaya untuk jumlah review di dashboard */
+
+.rating-count-dashboard {
     font-size: 0.75rem;
     color: #888;
     margin-bottom: 10px;
 }
-.detail-button { /* Spesifik untuk dashboard */
-    width: 90%; max-width: 120px; height: 32px; background-color: #e87e4b;
-    border-radius: 39px; display: flex; justify-content: center; align-items: center;
-    margin-top: auto; cursor: pointer; border: none; color: #ffffff;
-    font-size: 0.85rem; font-weight: 600;
+
+.detail-button {
+    width: 90%;
+    max-width: 120px;
+    height: 35px;
+    background-color: #e87e4b;
+    border-radius: 39px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    cursor: pointer;
+    border: none;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 8px rgba(232, 126, 75, 0.3);
 }
-.detail-button:hover { background-color: #bf7711; box-shadow: 0 6px 12px rgba(191, 119, 17, 0.4); }
 
-.new-arrivals-section { /* Spesifik untuk dashboard */
-    width: 100%; height: auto; border-radius: 30px; overflow: hidden;
-    margin-top: 0; margin-bottom: 30px; padding: 25px;
-    background-color: #ffffff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: flex; flex-direction: column; align-items: center;
+.detail-button:hover {
+    background-color: #bf7711;
+    box-shadow: 0 6px 12px rgba(191, 119, 17, 0.4);
 }
-.new-arrival-images {
-    display: flex; flex-wrap: wrap; justify-content: center;
-    gap: 20px; width: 100%; max-width: 900px;
-}
-.new-arrival-image { /* Di dashboard */
-    width: auto; max-height: 120px; min-width: 80px;
-    object-fit: contain; border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;
-    transition: transform 0.2s ease;
-}
-.new-arrival-image:hover { transform: scale(1.05); }
 
-/* --- Floating Action Button (FAB) for Search --- */
-.search-fab {
-    position: fixed; bottom: 30px; right: 30px; z-index: 100;
-    background-color: #e87e4b; border-radius: 50%;
-    width: 60px; height: 60px; display: flex; align-items: center;
-    justify-content: center; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.search-fab:hover { background-color: #bf7711; transform: translateY(-3px); }
-.search-fab .state-layer { padding: 0; }
-.search-fab .icon { width: 30px; height: 30px; filter: brightness(0) invert(1); }
+/* --- Responsive Adjustments --- */
 
-
-/* --- Responsive Adjustments for Dashboard Elements --- */
-
-@media (max-width: 1200px) { /* Tablet & Smaller Desktop */
-    .page-content-area { padding: 20px; } /* Padding konten 20px */
-    .page-main-title { font-size: 2rem; margin-bottom: 25px; }
-    .section-title { font-size: 1.6rem; }
-    
-    .dashboard-top-layout > .hero-section,
-    .dashboard-top-layout > .new-arrivals-section {
-        flex-basis: 100%; max-width: 100%;
+/* Transisi untuk sidebar di desktop */
+@media (min-width: 768px) {
+    /* Pastikan transisi hanya pada margin-left dan width */
+    .main-content-area {
+        transition: margin-left 0.3s ease, width 0.3s ease;
     }
-    .hero-section { max-width: 100%; padding: 25px; }
-    .hero-text { font-size: 1.1rem; }
 
-    .main-header { padding: 10px 20px; margin-bottom: 15px; } /* Padding header 20px */
-    .header-buttons { gap: 10px; }
-    .header-button { padding: 8px 15px; font-size: 0.9rem; }
-    .profile-button-header-round { width: 35px; height: 35px; }
+    .main-header .page-main-title {
+        text-align: left;
+        flex-basis: auto;
+    }
+    .main-header .search-profile-section {
+        flex-grow: 0;
+    }
 
-    .book-card { padding: 12px; }
-    .book-image { width: 75%; max-width: 100px; }
-    .book-title { font-size: 0.85rem; min-height: 2.5em; }
-    .star { width: 14px; height: 14px; }
-    .detail-button { height: 30px; font-size: 0.8rem; }
-    .new-arrival-image { max-height: 100px; }
+    .top-dashboard-sections {
+        flex-wrap: nowrap;
+    }
+
+    .hero-section-main,
+    .new-arrivals-section-main {
+        flex: 1 1 50%;
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .page-content-wrapper {
+        padding: 30px;
+    }
+
+    .section-title {
+        padding-left: 0;
+        text-align: left;
+    }
 }
 
-@media (max-width: 767px) { /* Mobile */
-    /* Penyesuaian untuk #dashboard-container dan .main-content agar sidebar mobile berfungsi */
-    #dashboard-container { flex-direction: column; }
-    .main-content { margin-left: 0; width: 100%; }
-    .page-content-area { padding: 20px 15px; } /* Padding konten 15px */
+/* 4 kolom untuk desktop besar */
+@media (min-width: 1025px) {
+    .book-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
 
-    .page-main-title { font-size: 1.6rem; text-align: center; margin-bottom: 20px; }
-    .hero-section { width: 100%; padding: 20px 15px; border-radius: 20px; margin-bottom: 20px;}
-    .hero-text-container { padding: 15px; border-radius: 20px; }
-    .hero-text { font-size: 1rem; }
-    .section-title { font-size: 1.4rem; text-align: center; padding-left: 0; }
-    
-    .book-image { width: 80%; max-width: 90px; }
-    .book-title { font-size: 0.75rem; min-height: 2.4em; }
-    .star {width: 12px; height: 12px;}
-    .detail-button { height: 28px; font-size: 0.7rem; padding: 0 10px; width: 100%; max-width: 100px;}
-
-    .new-arrivals-section { padding: 20px 15px; border-radius: 20px; margin-bottom: 20px;}
-    .new-arrival-images { gap: 10px;}
-    .new-arrival-image { max-height: 90px; }
-
-    .search-fab { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-    .search-fab .icon { width: 25px; height: 25px; }
-
-    .main-header {
-        width: 100%;
+/* Penyesuaian untuk Mobile (Max-width 767px) */
+/* Pada mobile, sidebar akan menjadi overlay atau tidak ada,
+   jadi main-content-area tidak perlu margin-left */
+@media (max-width: 767px) {
+    /* Hapus default sidebar-open agar tidak ada margin kiri */
+    body.sidebar-open .main-content-area {
         margin-left: 0;
-        padding: 10px 15px; /* Padding header 15px */
-        justify-content: space-between;
-        box-shadow: none; border-bottom: 1px solid #eee;
+        width: 100%;
     }
-    .header-buttons { gap: 10px; }
-    .header-button { padding: 8px 15px; font-size: 0.85rem; }
-    .profile-button-header-round { width: 32px; height: 32px; }
+    body.sidebar-closed .main-content-area {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* Header */
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+        margin-bottom: 15px;
+    }
+
+    .page-main-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .search-profile-section {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .header-buttons {
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    /* Page Content Wrapper */
+    .page-content-wrapper {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    /* Top Dashboard Sections */
+    .top-dashboard-sections {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .hero-section-main,
+    .new-arrivals-section-main {
+        flex-basis: 100%;
+        padding: 20px;
+    }
+
+    .hero-text-container-main {
+        padding: 15px;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+    }
+
+    .new-arrival-item {
+        width: 80px;
+        height: 120px;
+    }
+
+    /* Book Section & Cards */
+    .section-title {
+        font-size: 1.5rem;
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .book-section {
+        padding: 20px;
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 15px;
+    }
+
+    .book-card {
+        padding: 10px;
+    }
+
+    .book-image {
+        max-width: 100px;
+    }
+
+    .book-title {
+        font-size: 0.9rem;
+        min-height: 2.4em;
+    }
+
+    .book-author {
+        font-size: 0.8rem;
+    }
+
+    .star {
+        width: 14px;
+        height: 14px;
+    }
+
+    .rating-count-dashboard {
+        font-size: 0.7rem;
+    }
+
+    .detail-button {
+        height: 30px;
+        font-size: 0.8rem;
+        max-width: 100px;
+    }
 }
 
-@media (max-width: 480px) { /* Very small mobile devices */
-    .page-content-area { padding: 15px 10px; } /* Padding konten 10px */
-    .page-main-title { font-size: 1.4rem; }
-    .section-title { font-size: 1.2rem;}
-    .hero-section { padding: 15px; border-radius: 15px; }
-    .hero-text-container { padding: 10px; border-radius: 15px;}
-    .hero-text { font-size: 0.9rem;}
-
-    .book-card { padding: 10px;}
-    .book-image { max-width: 80px;}
-    .book-title { font-size: 0.7rem; min-height: 2.2em;}
-    .star {width: 10px; height: 10px;}
-    .detail-button { height: 26px; font-size: 0.65rem;}
-
-    .new-arrivals-section { padding: 15px; border-radius: 15px;}
-    .new-arrival-image { max-height: 80px;}
-
+@media (max-width: 480px) {
     .main-header {
-        padding: 10px 10px; /* Padding header 10px */
+        padding: 10px 15px;
+    }
+
+    .page-main-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .search-profile-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header-buttons {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .header-button {
+        width: 100%;
+        max-width: 180px;
+    }
+
+    .page-content-wrapper {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .hero-section-main,
+    .new-arrivals-section-main,
+    .book-section {
+        padding: 15px;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+
+    .book-card {
+        padding: 8px;
+    }
+
+    .book-image {
+        max-width: 80px;
+    }
+
+    .book-title {
+        font-size: 0.8rem;
+        min-height: 2.2em;
+    }
+
+    .book-author {
+        font-size: 0.75rem;
+    }
+
+    .star {
+        width: 12px;
+        height: 12px;
+    }
+
+    .rating-count-dashboard {
+        font-size: 0.65rem;
+    }
+
+    .detail-button {
+        height: 28px;
+        font-size: 0.7rem;
+        max-width: 90px;
     }
 }
