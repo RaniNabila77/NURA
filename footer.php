@@ -63,21 +63,18 @@ $currentYear = date("Y");
 </footer>
 
 <style>
-/* --- Footer Styling --- */
+/* --- Footer Styling (di dalam footer.php) --- */
 .main-footer {
-    background-color:#2c3e50;   /* Matches sidebar dark blue */
-    color: #ffffff; /* All text white */
+    background-color: #003160;
+    color: #ffffff;
     padding: 40px 20px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Outfit', sans-serif; /* MODIFIED: Font diubah ke Outfit */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    margin-left: 250px;
-    transition: margin-left 0.3s ease;
-    font-weight: bold; /* Bold all text in the footer by default */
-}
-
-/* Adjust footer margin when sidebar is collapsed */
-.dashboard.sidebar-collapsed .main-footer {
-    margin-left: 70px;
+    font-weight: bold;
+    
+    width: 100%; 
+    margin-left: 0; 
+    box-sizing: border-box;
 }
 
 .footer-content {
@@ -85,10 +82,10 @@ $currentYear = date("Y");
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto 30px auto;
+    max-width: 1200px; /* Konten di dalam footer memiliki lebar maksimal */
+    margin: 0 auto 30px auto; /* Konten di dalam footer terpusat */
     padding-bottom: 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Slightly more visible border */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .footer-column {
@@ -99,12 +96,12 @@ $currentYear = date("Y");
 
 .footer-heading {
     font-size: 1.4em;
-    color: #ffffff; /* White heading color */
+    color: #ffffff;
     margin-bottom: 20px;
-    border-bottom: 2px solid #3498db; /* Use the brighter blue for accent underline */
+    border-bottom: 2px solid #007bff; 
     padding-bottom: 5px;
     display: inline-block;
-    font-weight: bold; /* Ensure heading is bold */
+    font-weight: bold;
 }
 
 .service-hours-list {
@@ -113,7 +110,7 @@ $currentYear = date("Y");
     margin: 0;
     line-height: 1.8;
     font-size: 0.95em;
-    font-weight: bold; /* Ensure service hours text is bold */
+    font-weight: bold;
 }
 
 .address-info, .contact-info-list {
@@ -122,7 +119,7 @@ $currentYear = date("Y");
     gap: 10px;
     font-style: normal;
     font-size: 0.95em;
-    font-weight: bold; /* Ensure address/contact text is bold */
+    font-weight: bold;
 }
 
 .address-item, .contact-item {
@@ -134,7 +131,7 @@ $currentYear = date("Y");
 .location-icon, .contact-icon {
     width: 20px;
     height: 20px;
-    filter: invert(100%); /* Makes icons white */
+    filter: invert(100%);
     flex-shrink: 0;
 }
 
@@ -154,84 +151,69 @@ $currentYear = date("Y");
     justify-content: center;
     gap: 8px;
     font-size: 0.9em;
-    color: #ffffff; /* White copyright text */
-    font-weight: bold; /* Ensure copyright text is bold */
+    color: #ffffff;
+    font-weight: bold;
 }
 
 .copyright-icon {
     width: 16px;
     height: 16px;
-    filter: invert(100%); /* Makes icon white */
+    filter: invert(100%);
     opacity: 0.8;
 }
 
 /* --- Responsive Adjustments for Footer --- */
 
-/* Tablets and smaller laptops */
 @media (max-width: 1024px) {
     .main-footer {
         padding: 30px 15px;
     }
-
     .footer-heading {
         font-size: 1.3em;
     }
 }
 
-/* Small tablets and large phones */
 @media (max-width: 767px) {
     .main-footer {
-        padding: 25px 10px;
-        margin-left: 0;
-    }
-
-    .dashboard.sidebar-collapsed .main-footer {
-        margin-left: 70px;
+        padding: 25px 10px; 
+        /* margin-left: 0; dan width: 100% sudah diatur di aturan dasar .main-footer */
     }
 
     .footer-content {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-start; 
         gap: 25px;
         padding-bottom: 25px;
     }
-
     .footer-column {
         min-width: unset;
         width: 100%;
-        padding: 0 10px;
-        text-align: left;
+        padding: 0 10px; 
+        text-align: left; 
     }
-
     .footer-heading {
         font-size: 1.2em;
         margin-bottom: 15px;
     }
-
     .service-hours-list, .address-info, .contact-info-list {
         font-size: 0.9em;
     }
 }
 
-/* Very small screens */
 @media (max-width: 479px) {
     .main-footer {
         padding: 20px 5px;
     }
-
     .footer-heading {
         font-size: 1.1em;
     }
-
     .service-hours-list, .address-info, .contact-info-list {
         font-size: 0.85em;
     }
-
     .location-icon, .contact-icon {
         width: 18px;
         height: 18px;
     }
-
     .copyright-info {
         font-size: 0.8em;
     }
