@@ -1,0 +1,282 @@
+/* css/peminjaman.css */
+
+/* General Layout & Background */
+body {
+    background-color: #F5EEE1; /* UBAH DI SINI: Warna latar belakang dasar */
+    color: #2C3E50;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+/* Specific styles for Peminjaman Buku page - LEBARKAN INI */
+.peminjaman-buku-content-wrapper {
+    padding: 30px;
+    /* Mengurangi margin samping agar konten bisa lebih lebar */
+    margin: 0 40px; /* Nilai ini bisa disesuaikan lagi jika ingin lebih lebar/sempit */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.page-title {
+    font-size: 2.5em;
+    color: #2C3E50;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.book-loan-card {
+    background-color: #FFFFFF; /* UBAH DI SINI: Memperbaiki kesalahan penulisan */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    /* **PERUBAHAN UTAMA UNTUK MELEBARKAN FORM INI** */
+    /* Berdasarkan gambar, lebar card putih (tempat form) sekitar 1000px-1100px */
+    max-width: 1050px; /* Menambah max-width agar card lebih lebar */
+    width: 100%; /* Memastikan card akan mengisi 100% dari ruang yang tersedia hingga max-width */
+    margin: 0 auto; /* Tengah card di halaman */
+}
+
+.loan-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.form-group label {
+    font-size: 1em;
+    color: #7F7F7F;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+    width: 100%; /* Ini sudah benar, akan mengikuti lebar parent (book-loan-card) */
+    padding: 12px;
+    border: 1px solid #EAEAEA;
+    border-radius: 10px;
+    font-size: 1.1em;
+    color: #2C3E50;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[readonly] {
+    background-color: #F8F7F4;
+    cursor: not-allowed;
+    color: #555;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Suggestions box for book search */
+.suggestions-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.suggestion-item {
+    padding: 10px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95em;
+    color: #333;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    border-top: 1px solid #EAEAEA;
+    margin-top: 20px;
+}
+
+.submit-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.submit-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Confirmation and Error Messages */
+.confirmation-message,
+.error-message {
+    background-color: #E6F7FF;
+    border: 1px solid #91D5FF;
+    color: #004085;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    /* Jika ingin lebar juga, bisa diatur max-width-nya sama seperti .book-loan-card */
+    max-width: 1050px; /* Pastikan sama dengan .book-loan-card */
+    margin: 0 auto;
+}
+
+.error-message {
+    background-color: #FFF3CD;
+    border-color: #FFECB5;
+    color: #856404;
+}
+
+.confirmation-message h2,
+.error-message p {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: inherit;
+}
+
+.confirmation-message p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+.back-to-home-btn,
+.try-again-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+.back-to-home-btn:hover,
+.try-again-btn:hover {
+    background-color: #218838;
+}
+
+.try-again-btn {
+    background-color: #6c757d;
+}
+.try-again-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .peminjaman-buku-content-wrapper {
+        margin: 0 30px;
+    }
+    .book-loan-card,
+    .confirmation-message,
+    .error-message {
+        max-width: 90%; /* Turunkan max-width untuk layar menengah */
+    }
+}
+@media (max-width: 768px) {
+    .peminjaman-buku-content-wrapper {
+        margin: 0 20px;
+        padding: 20px;
+    }
+    .page-title {
+        font-size: 2em;
+    }
+    .book-loan-card {
+        padding: 25px;
+        max-width: 100%; /* Agar mengisi lebar penuh */
+    }
+    .form-group input,
+    .submit-btn {
+        font-size: 1em;
+        padding: 10px;
+    }
+    .confirmation-message h2,
+    .error-message p {
+        font-size: 1.5em;
+    }
+    .confirmation-message p {
+        font-size: 1em;
+    }
+    .back-to-home-btn,
+    .try-again-btn {
+        padding: 8px 20px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .peminjaman-buku-content-wrapper {
+        margin: 0 15px;
+        padding: 15px;
+    }
+    .page-title {
+        font-size: 1.8em;
+    }
+    .book-loan-card {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    .form-actions {
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .submit-btn,
+    .back-to-home-btn,
+    .try-again-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
