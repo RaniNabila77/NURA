@@ -2,38 +2,38 @@
 // dashboard.php (data buku dan fungsi PHP tetap sama)
 $books = [
     'new_arrivals' => [
-        ['id' => 'buku_baru_1', 'image' => 'img/group-98.png', 'alt' => 'New Arrival 1'],
-        ['id' => 'buku_baru_2', 'image' => 'img/image-1.png', 'alt' => 'New Arrival 2'],
-        ['id' => 'buku_baru_3', 'image' => 'img/image-17.png', 'alt' => 'New Arrival 3'],
-        ['id' => 'buku_baru_4', 'image' => 'img/image-2.png', 'alt' => 'New Arrival 4'],
+        ['id' => 'buku_baru_1', 'image' => 'img/richdad.jpeg', 'alt' => 'New Arrival 1'],
+        ['id' => 'buku_baru_2', 'image' => 'img/atomichabits.jpeg', 'alt' => 'New Arrival 2'],
+        ['id' => 'buku_baru_3', 'image' => 'img/bumi.jpeg', 'alt' => 'New Arrival 3'],
+        ['id' => 'buku_baru_4', 'image' => 'img/filosofiteras.jpeg', 'alt' => 'New Arrival 4'],
     ],
     'popular_reads' => [
-        ['id' => 'agama_peradaban', 'image' => 'img/image-10.png', 'title' => 'AGAMA UNTUK PERADABAN', 'stars' => 4],
-        ['id' => 'atomic_habits', 'image' => 'img/image-11.png', 'title' => 'ATOMIC HABITS', 'stars' => 4],
-        ['id' => 'dongeng_kancil', 'image' => 'img/image-13.png', 'title' => 'DONGENG KANCIL', 'stars' => 4],
-        ['id' => 'detektif_conan', 'image' => 'img/image-12.png', 'title' => 'DETEKTIF CONAN', 'stars' => 4],
-        ['id' => 'rich_dad', 'image' => 'img/image-5.png', 'title' => 'RICH DAD POOR DAD', 'stars' => 4],
-        ['id' => 'zero_to_one', 'image' => 'img/image-7.png', 'title' => 'ZERO TO ONE', 'stars' => 4],
-        ['id' => 'kamus_lengkap', 'image' => 'img/image-6.png', 'title' => 'KAMUS LENGKAP', 'stars' => 4],
-        ['id' => 'kriptografi', 'image' => 'img/image-26.png', 'title' => 'DASAR DASAR KRIPTOGRAFI', 'stars' => 4],
+        ['id' => 'agama_peradaban', 'image' => 'img/agamauntukperadaban.jpg', 'title' => 'AGAMA UNTUK PERADABAN', 'stars' => 4],
+        ['id' => 'atomic_habits', 'image' => 'img/atomichabits.jpeg', 'title' => 'ATOMIC HABITS', 'stars' => 4],
+        ['id' => 'dongeng_kancil', 'image' => 'img/dongengkancil.jpeg', 'title' => 'DONGENG KANCIL', 'stars' => 4],
+        ['id' => 'detektif_conan', 'image' => 'img/detektifconan.jpeg', 'title' => 'DETEKTIF CONAN', 'stars' => 4],
+        ['id' => 'rich_dad', 'image' => 'img/richdad.jpeg', 'title' => 'RICH DAD POOR DAD', 'stars' => 4],
+        ['id' => 'zero_to_one', 'image' => 'img/zeroone.jpeg', 'title' => 'ZERO TO ONE', 'stars' => 4],
+        ['id' => 'kamus_lengkap', 'image' => 'img/kamus.jpeg', 'title' => 'KAMUS LENGKAP', 'stars' => 4],
+        ['id' => 'kriptografi', 'image' => 'img/kriptografi.jpeg', 'title' => 'DASAR DASAR KRIPTOGRAFI', 'stars' => 4],
     ],
     'recommended_for_you' => [
-        ['id' => 'perahu_kertas', 'image' => 'img/image-23.png', 'title' => 'PERAHU KERTAS', 'stars' => 4],
-        ['id' => 'fleeing_babylon', 'image' => 'img/image-24.png', 'title' => 'FLEEING BABYLON', 'stars' => 4],
-        ['id' => 'kejar_bintang', 'image' => 'img/image-25.png', 'title' => 'AYO KITA KEJAR <br />BINTANG ITU', 'stars' => 4],
-        ['id' => 'art_of_holding', 'image' => 'img/image-22.png', 'title' => 'THE ART OF HOLDING<br />ON AND LETTING GO', 'stars' => 4],
+        ['id' => 'perahu_kertas', 'image' => 'img/perahukertas.jpeg', 'title' => 'PERAHU KERTAS', 'stars' => 4],
+        ['id' => 'fleeing_babylon', 'image' => 'img/fleefrom.jpeg', 'title' => 'FLEEING BABYLON', 'stars' => 4],
+        ['id' => 'kejar_bintang', 'image' => 'img/kejarbintang.jpeg', 'title' => 'AYO KITA KEJAR <br />BINTANG ITU', 'stars' => 4],
+        ['id' => 'art_of_holding', 'image' => 'img/artofholding.jpeg', 'title' => 'THE ART OF HOLDING<br />ON AND LETTING GO', 'stars' => 4],
     ],
     'fiction' => [
-        ['id' => 'kehidupan_ketiga', 'image' => 'img/image-31.png', 'title' => 'KEHIDUPAN KETIGA', 'stars' => 4],
-        ['id' => 'bicara_seninya', 'image' => 'img/image-29.png', 'title' => 'BICARA ITU ADA SENINYA', 'stars' => 4],
-        ['id' => 'filosofi_teras', 'image' => 'img/image-28.png', 'title' => 'FILOSOFI TERAS', 'stars' => 4],
+        ['id' => 'kehidupan_ketiga', 'image' => 'img/dimensiketiga.jpeg', 'title' => 'KEHIDUPAN KETIGA', 'stars' => 4],
+        ['id' => 'bicara_seninya', 'image' => 'img/bicaraseni.jpeg', 'title' => 'BICARA ITU ADA SENINYA', 'stars' => 4],
+        ['id' => 'filosofi_teras', 'image' => 'img/filosofiteras.jpeg', 'title' => 'FILOSOFI TERAS', 'stars' => 4],
     ],
 ];
 
 function renderBookCard($book) {
     $starsHtml = '';
     for ($i = 0; $i < ($book['stars'] ?? 0); $i++) {
-        $starsHtml .= '<img class="star" src="img/star-10-11.svg" alt="star" />';
+        $starsHtml .= '<img class="star" src="img/star.jpg" alt="star" />';
     }
     return '
         <div class="book-card">
@@ -76,7 +76,7 @@ function renderBookSection($title, $books) {
 
                 if ($is_logged_in) {
                     echo '<a href="profile_edit.php" class="profile-button-header-round" title="Edit Profil">';
-                    echo '  <img src="img/default-profile.png" alt="Profil">'; // Ganti dengan path gambar profil user
+                    echo '  <img src="img/profile.png" alt="Profil">'; // Ganti dengan path gambar profil user
                     echo '</a>';
                 } else {
                     echo '<div class="header-buttons">';
