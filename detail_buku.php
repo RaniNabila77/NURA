@@ -13,17 +13,17 @@ function renderStarsDisplay($rating, $maxStars = 5) {
     $halfStar = ($rating - $fullStars) >= 0.5;
 
     for ($i = 0; $i < $fullStars; $i++) {
-        $html .= '<img class="star-filled" src="img/Star.png" alt="Bintang Penuh" />'; // Gunakan Star.png untuk konsistensi dengan tampilan display
+        $html .= '<img class="star-filled" src="img/star.jpg" alt="Bintang Penuh" />'; // Gunakan Star.png untuk konsistensi dengan tampilan display
     }
     if ($halfStar && $fullStars < $maxStars) {
-        $html .= '<img class="star-filled" src="img/Star.png" alt="Bintang Setengah" />'; // Atau img/Star-half.png jika ada
+        $html .= '<img class="star-filled" src="img/star3.jpg" alt="Bintang Setengah" />'; // Atau img/Star-half.png jika ada
     }
 
     $currentFilled = $fullStars + ($halfStar ? 1 : 0);
     $emptyStars = $maxStars - $currentFilled;
 
     for ($i = 0; $i < $emptyStars; $i++) {
-        $html .= '<img class="star-empty-display" src="img/image.svg" alt="Bintang Kosong" />';
+        $html .= '<img class="star-empty-display" src="img/Star.jpg" alt="Bintang Kosong" />';
     }
     return $html;
 }
@@ -35,7 +35,7 @@ if (!$book_id || !isset($allBooksData[$book_id])) {
     // Redirect ke halaman not found atau tampilkan pesan error yang lebih baik
     header("HTTP/1.0 404 Not Found");
     echo "<h1>404 - Buku Tidak Ditemukan</h1>";
-    echo "<p>Maaf, buku yang Anda cari tidak ada dalam sistem kami.</p>";
+    echo "<p>Maaf, buku yang Anda cari sedang kosong.</p>";
     echo "<a href='dashboard.php'>Kembali ke Dashboard</a>";
     exit;
 }
@@ -152,8 +152,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $is_logged_in = true; // Ganti dengan logika status login Anda
 
                 if ($is_logged_in) {
-                    echo '<a href="profile_edit.php" class="profile-button-header-round" title="Edit Profil">';
-                    echo '  <img src="img/default-profile.png" alt="Profil">'; // Ganti dengan path gambar profil Anda
+                    echo '<a href="profile.php" class="profile-button-header-round" title="Edit Profil">';
+                    echo '  <img src="img/.profile.png" alt="Profil">'; // Ganti dengan path gambar profil Anda
                     echo '</a>';
                 } else {
                     echo '<div class="header-buttons">';
@@ -204,7 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <h3 class="section-subtitle">Beri Rating Buku Ini</h3>
                             <div class="user-rating-stars" id="userRatingInput">
                                 <?php for ($i = 1; $i <= 5; $i++): ?>
-                                    <img class="star-input" src="img/image.svg" alt="Beri <?php echo $i; ?> bintang" data-value="<?php echo $i; ?>" />
+                                    <img class="star-input" src="img/star2.jpg" alt="Beri <?php echo $i; ?> bintang" data-value="<?php echo $i; ?>" />
                                 <?php endfor; ?>
                             </div>
                         </div>
@@ -262,9 +262,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             function highlightStarsVisual(rating) {
                 stars.forEach((star, index) => {
                     if (index < rating) {
-                        star.src = 'img/star-filled.svg'; // Path to your filled star icon
+                        star.src = 'img/star.jpg'; // Path to your filled star icon
                     } else {
-                        star.src = 'img/image.svg'; // Path to your empty star icon
+                        star.src = 'img/star2.jpg'; // Path to your empty star icon
                     }
                 });
             }
