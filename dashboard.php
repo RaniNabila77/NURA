@@ -75,7 +75,7 @@ function renderBookSection($title, $books) {
                 $is_logged_in = true; // Ganti dengan logika status login Anda
 
                 if ($is_logged_in) {
-                    echo '<a href="profile_edit.php" class="profile-button-header-round" title="Edit Profil">';
+                    echo '<a href="profile.php" class="profile-button-header-round" title="Edit Profil">';
                     echo '  <img src="img/profile.png" alt="Profil">'; // Ganti dengan path gambar profil user
                     echo '</a>';
                 } else {
