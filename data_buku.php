@@ -1,6 +1,6 @@
 <?php
 // data_buku.php
-// File ini hanya berisi array data buku
+// File ini hanya berisi array data buku yang terpusat
 
 $allBooksData = [
     'atomic_habits' => [
@@ -8,47 +8,21 @@ $allBooksData = [
         'judul' => 'ATOMIC HABITS',
         'author' => 'JAMES CLEAR',
         'penerbit' => 'AVERY',
-        'genre' => 'PSIKOLOGY',
+        'genre' => 'PSIKOLOGY, PENGEMBANGAN DIRI',
         'jenis_buku' => 'HARD COPY',
         'status' => 'TERSEDIA',
-        'cover_image' => 'img/atomichabits.jpeg', // Sesuaikan path gambar
-        'deskripsi' => 'Atomic Habits menjelaskan bagaimana perubahan kecil dalam kebiasaan sehari-hari dapat menghasilkan hasil yang luar biasa dalam jangka panjang. James Clear menawarkan pendekatan sistematis untuk membentuk kebiasaan baik dan menghentikan kebiasaan buruk melalui pemahaman ilmiah tentang perilaku manusia. Buku ini dilengkapi dengan strategi praktis yang mudah diterapkan, seperti hukum membentuk kebiasaban, kekuatan lingkungan, serta pentingnya sistem dibandingkan tujuan. Cocok untuk siapa saja yang ingin meningkatkan produktivitas, fokus, kesehatan, atau aspek lainnya dalam hidup secara konsisten dan berkelanjutan.',
+        'cover_image' => 'img/atomichabits.jpeg',
+        'deskripsi' => 'Atomic Habits menjelaskan bagaimana perubahan kecil dalam kebiasaan sehari-hari dapat menghasilkan hasil yang luar biasa dalam jangka panjang. James Clear menawarkan pendekatan sistematis untuk membentuk kebiasaan baik dan menghentikan kebiasaan buruk melalui pemahaman ilmiah tentang perilaku manusia. Buku ini dilengkapi dengan strategi praktis yang mudah diterapkan, seperti hukum membentuk kebiasaan, kekuatan lingkungan, serta pentingnya sistem dibandingkan tujuan. Cocok untuk siapa saja yang ingin meningkatkan produktivitas, fokus, kesehatan, atau aspek lainnya dalam hidup secara konsisten dan berkelanjutan.',
         'average_rating' => 4.5,
         'rating_count' => 60,
         'reviews' => [
-            [
-                'reviewer_name' => 'Aliya Ramadani',
-                'review_text' => 'Atomic Habits adalah buku yang wajib dibaca! Penjelasannya jelas dan mudah dipahami. Saya merasa termotivasi untuk membentuk kebiasaban positif.',
-                'review_date' => '01/05/2025',
-                'rating' => 5
-            ],
-            [
-                'reviewer_name' => 'Budi Santoso',
-                'review_text' => 'Sangat membantu untuk mengubah perspektif tentang kebiasaan. Beberapa bab agak repetitif, tapi intinya sangat kuat.',
-                'review_date' => '15/04/2025',
-                'rating' => 4
-            ],
-            [
-                'reviewer_name' => 'Citra Lestari',
-                'review_text' => 'Buku yang bagus, memberikan banyak insight praktis. Sudah mulai menerapkan beberapa tipsnya.',
-                'review_date' => '10/04/2025',
-                'rating' => 4
-            ],
-            [
-                'reviewer_name' => 'Dewi Anggraini',
-                'review_text' => 'Konsepnya sederhana tapi dampaknya besar. Sangat direkomendasikan untuk pengembangan diri.',
-                'review_date' => '05/04/2025',
-                'rating' => 5
-            ],
-            [
-                'reviewer_name' => 'Eko Prasetyo',
-                'review_text' => 'Salah satu buku self-help terbaik yang pernah saya baca. Mudah dicerna dan actionable.',
-                'review_date' => '02/04/2025',
-                'rating' => 5
-            ]
+            ['reviewer_name' => 'Aliya Ramadani', 'review_text' => 'Atomic Habits adalah buku yang wajib dibaca! Penjelasannya jelas dan mudah dipahami. Saya merasa termotivasi untuk membentuk kebiasaan positif.', 'review_date' => '01/05/2025', 'rating' => 5],
+            ['reviewer_name' => 'Budi Santoso', 'review_text' => 'Sangat membantu untuk mengubah perspektif tentang kebiasaan. Beberapa bab agak repetitif, tapi intinya sangat kuat.', 'review_date' => '15/04/2025', 'rating' => 4],
+            ['reviewer_name' => 'Citra Lestari', 'review_text' => 'Buku yang bagus, memberikan banyak insight praktis. Sudah mulai menerapkan beberapa tipsnya.', 'review_date' => '10/04/2025', 'rating' => 4],
+            ['reviewer_name' => 'Dewi Anggraini', 'review_text' => 'Konsepnya sederhana tapi dampaknya besar. Sangat direkomendasikan untuk pengembangan diri.', 'review_date' => '05/04/2025', 'rating' => 5],
+            ['reviewer_name' => 'Eko Prasetyo', 'review_text' => 'Salah satu buku self-help terbaik yang pernah saya baca. Mudah dicerna dan actionable.', 'review_date' => '02/04/2025', 'rating' => 5]
         ]
     ],
-    // --- START BUKU TAMBAHAN (Pastikan semua ada di sini) ---
     'agama_untuk_peradaban' => [
         'id_buku' => '00101',
         'judul' => 'AGAMA UNTUK PERADABAN',
@@ -57,7 +31,7 @@ $allBooksData = [
         'genre' => 'FILOSOFI, AGAMA',
         'jenis_buku' => 'HARD COPY',
         'status' => 'TERSEDIA',
-        'cover_image' => 'img/agamauntukperadaban.jpeg', // Contoh path gambar
+        'cover_image' => 'img/agamauntukperadaban.jpg',
         'deskripsi' => 'Agama untuk Peradaban adalah kumpulan esai dan pemikiran Nurcholish Madjid (Cak Nur) yang membahas peran agama dalam membangun peradaban modern yang inklusif, toleran, dan maju. Cak Nur menekankan pentingnya pemahaman agama yang kontekstual dan substantif, bukan formalistik, untuk menghadapi tantangan zaman. Buku ini mengajak pembaca untuk merefleksikan kembali nilai-nilai keagamaan sebagai fondasi etika dan moral dalam kehidupan bermasyarakat dan bernegara, serta sebagai pendorong kemajuan ilmu pengetahuan dan kebudayaan.',
         'average_rating' => 4.7,
         'rating_count' => 45,
@@ -69,7 +43,7 @@ $allBooksData = [
     'dongeng_kancil' => [
         'id_buku' => '00202',
         'judul' => 'DONGENG KANCIL',
-        'author' => 'ANONIM', // Atau penulis koleksi jika ada
+        'author' => 'ANONIM',
         'penerbit' => 'GRAMEDIA PUSTAKA UTAMA',
         'genre' => 'ANAK, CERITA RAKYAT',
         'jenis_buku' => 'HARD COPY',
@@ -137,7 +111,7 @@ $allBooksData = [
     'dasar_dasar_kriptografi' => [
         'id_buku' => '00606',
         'judul' => 'DASAR-DASAR KRIPTOGRAFI',
-        'author' => 'BRUCE SCHNEIER', // Atau penulis lain yang relevan
+        'author' => 'BRUCE SCHNEIER',
         'penerbit' => 'PENERBIT X',
         'genre' => 'TEKNOLOGI, ILMU KOMPUTER',
         'jenis_buku' => 'HARD COPY',
@@ -171,7 +145,7 @@ $allBooksData = [
     'fleeing_babylon' => [
         'id_buku' => '00808',
         'judul' => 'FLEEING BABYLON',
-        'author' => 'STEPHEN MANSFIELD', // Asumsi penulis yang relevan untuk topik ini
+        'author' => 'STEPHEN MANSFIELD',
         'penerbit' => 'PENERBIT Y',
         'genre' => 'SPIRITUAL, SOSIAL',
         'jenis_buku' => 'HARD COPY',
@@ -188,7 +162,7 @@ $allBooksData = [
     'ayo_kita_kejar_bintang_itu' => [
         'id_buku' => '00909',
         'judul' => 'AYO KITA KEJAR BINTANG ITU',
-        'author' => 'FISCHER SPENCER', // Asumsi penulis
+        'author' => 'FISCHER SPENCER',
         'penerbit' => 'PENERBIT Z',
         'genre' => 'MOTIVASI, INSPIRASI',
         'jenis_buku' => 'HARD COPY',
@@ -205,7 +179,7 @@ $allBooksData = [
     'the_art_of_holding_on_and_letting_go' => [
         'id_buku' => '01010',
         'judul' => 'THE ART OF HOLDING ON AND LETTING GO',
-        'author' => 'KRISTIN BARTLEY LENSEN', // Asumsi penulis
+        'author' => 'KRISTIN BARTLEY LENSEN',
         'penerbit' => 'PENERBIT A',
         'genre' => 'FIKSI, KEHIDUPAN',
         'jenis_buku' => 'HARD COPY',
@@ -222,7 +196,7 @@ $allBooksData = [
     'kehidupan_ketiga' => [
         'id_buku' => '01111',
         'judul' => 'KEHIDUPAN KETIGA',
-        'author' => 'ACHMAD MUSTOFA BISRI', // Asumsi penulis
+        'author' => 'ACHMAD MUSTOFA BISRI',
         'penerbit' => 'PENERBIT B',
         'genre' => 'SPIRITUAL, FILOSOFI',
         'jenis_buku' => 'HARD COPY',
@@ -270,6 +244,90 @@ $allBooksData = [
             ['reviewer_name' => 'Eko Prasetya', 'review_text' => 'Sangat mencerahkan, saya jadi lebih bijak dalam menyikapi masalah.', 'review_date' => '26/04/2025', 'rating' => 5],
         ]
     ],
-    // --- END BUKU TAMBAHAN ---
+    'zero_to_one' => [
+        'id_buku' => '01414',
+        'judul' => 'ZERO TO ONE',
+        'author' => 'PETER THIEL',
+        'penerbit' => 'CROWN BUSINESS',
+        'genre' => 'BISNIS, STARTUP',
+        'jenis_buku' => 'HARD COPY',
+        'status' => 'TERSEDIA',
+        'cover_image' => 'img/zeroone.jpeg',
+        'deskripsi' => 'Zero to One adalah buku yang menantang pemikiran konvensional tentang inovasi dan bisnis. Peter Thiel, salah satu pendiri PayPal, berargumen bahwa kemajuan sejati datang dari menciptakan hal-hal baru ("zero to one"), bukan hanya meningkatkan yang sudah ada ("one to N"). Buku ini membahas pentingnya monopoli kreatif, membangun perusahaan unik, dan menemukan pasar yang belum tereksplorasi. Wajib dibaca bagi pengusaha, inovator, dan siapa saja yang tertarik pada masa depan teknologi.',
+        'average_rating' => 4.6,
+        'rating_count' => 75,
+        'reviews' => [
+            ['reviewer_name' => 'Gita Putri', 'review_text' => 'Sangat inspiratif untuk para founder startup. Memberikan perspektif yang berbeda.', 'review_date' => '15/05/2025', 'rating' => 5],
+            ['reviewer_name' => 'Hendra Setiawan', 'review_text' => 'Membuka mata tentang bagaimana berpikir tentang inovasi. Logikanya sangat kuat.', 'review_date' => '02/05/2025', 'rating' => 4],
+        ]
+    ],
+    'kesehatan_olahraga' => [
+        'id_buku' => '01515',
+        'judul' => 'KESEHATAN OLAHRAGA',
+        'author' => 'DR. dr. H. REZA, M.Kes, Sp.OT (K)',
+        'penerbit' => 'PENERBIT X',
+        'genre' => 'KESEHATAN, OLAHRAGA',
+        'jenis_buku' => 'HARD COPY',
+        'status' => 'TERSEDIA',
+        'cover_image' => 'img/kesehatan.jpeg',
+        'deskripsi' => 'Buku Kesehatan Olahraga menyajikan informasi komprehensif mengenai prinsip-prinsip kesehatan dan pencegahan cedera dalam aktivitas fisik dan olahraga. Pembaca akan memahami anatomi dan fisiologi terkait olahraga, nutrisi untuk atlet, serta penanganan umum cedera. Cocok untuk atlet, pelatih, mahasiswa olahraga, dan siapa saja yang ingin menjaga kesehatan dan kebugaran melalui aktivitas fisik yang aman dan efektif.',
+        'average_rating' => 4.3,
+        'rating_count' => 30,
+        'reviews' => [
+            ['reviewer_name' => 'Indra Wijaya', 'review_text' => 'Penjelasan lengkap dan mudah dipahami. Sangat berguna untuk program latihan saya.', 'review_date' => '20/05/2025', 'rating' => 4],
+            ['reviewer_name' => 'Juwita Sari', 'review_text' => 'Wajib punya bagi yang aktif berolahraga. Banyak tips pencegahan cedera.', 'review_date' => '08/05/2025', 'rating' => 4],
+        ]
+    ],
+    'bumi' => [
+        'id_buku' => '01616',
+        'judul' => 'BUMI',
+        'author' => 'TERE LIYE',
+        'penerbit' => 'GRAMEDIA PUSTAKA UTAMA',
+        'genre' => 'FIKSI, FANTASI',
+        'jenis_buku' => 'HARD COPY',
+        'status' => 'TERSEDIA',
+        'cover_image' => 'img/bumi.jpeg',
+        'deskripsi' => 'Novel Bumi karya Tere Liye mengisahkan petualangan Raib, seorang remaja berusia 15 tahun yang ternyata memiliki kemampuan istimewa dan berasal dari klan Bulan. Bersama dua sahabatnya, Seli dan Ali, ia menjelajahi berbagai dunia paralel yang menakjubkan dan menghadapi berbagai tantangan. Novel ini penuh dengan imajinasi, persahabatan, dan misteri yang akan membawa pembaca pada perjalanan yang tak terlupakan.',
+        'average_rating' => 4.6,
+        'rating_count' => 85,
+        'reviews' => [
+            ['reviewer_name' => 'Mawar Jingga', 'review_text' => 'Dunia yang diciptakan Tere Liye sangat memukau, tidak sabar membaca kelanjutannya!', 'review_date' => '01/06/2025', 'rating' => 5],
+            ['reviewer_name' => 'Angkasa Biru', 'review_text' => 'Imaginatif dan seru. Cocok untuk semua usia yang suka fantasi.', 'review_date' => '25/05/2025', 'rating' => 4],
+        ]
+    ],
+    'sejarah_dunia' => [
+        'id_buku' => '01717',
+        'judul' => 'SAPIENS: SEJARAH SINGKAT UMAT MANUSIA',
+        'author' => 'YUVAL NOAH HARARI',
+        'penerbit' => 'KEPUSTAKAAN POPULER GRAMEDIA',
+        'genre' => 'SEJARAH, NON-FIKSI',
+        'jenis_buku' => 'HARD COPY',
+        'status' => 'TERSEDIA',
+        'cover_image' => 'img/sapiens.jpeg',
+        'deskripsi' => 'Sapiens: Sejarah Singkat Umat Manusia adalah buku fenomenal karya Yuval Noah Harari yang membahas sejarah peradaban manusia dari masa lalu hingga masa depan. Harari menganalisis bagaimana Homo sapiens, dari sekadar spesies primata, mampu mendominasi bumi melalui kemampuan kognitif, revolusi pertanian, unifikasi umat manusia, hingga revolusi ilmiah. Buku ini menantang pemikiran tradisional dan memberikan perspektif baru tentang siapa kita dan ke mana kita menuju.',
+        'average_rating' => 4.9,
+        'rating_count' => 150,
+        'reviews' => [
+            ['reviewer_name' => 'Prof. Ahmad', 'review_text' => 'Karya masterpiece! Mengubah cara saya melihat sejarah dan masa depan manusia.', 'review_date' => '05/06/2025', 'rating' => 5],
+            ['reviewer_name' => 'Putri Lestari', 'review_text' => 'Sangat mendalam dan provokatif. Wajib dibaca untuk memahami peradaban.', 'review_date' => '01/06/2025', 'rating' => 5],
+        ]
+    ],
+    'filsafat_ilmu' => [
+        'id_buku' => '01818',
+        'judul' => 'FILSAFAT ILMU',
+        'author' => 'JUJUN S. SURIA SUMANTRI',
+        'penerbit' => 'SINAR HARAPAN',
+        'genre' => 'FILOSOFI, ILMU PENGETAHUAN',
+        'jenis_buku' => 'HARD COPY',
+        'status' => 'TERSEDIA',
+        'cover_image' => 'img/filsafat.jpeg',
+        'deskripsi' => 'Filsafat Ilmu adalah buku pengantar yang membahas landasan filosofis ilmu pengetahuan. Jujun S. Suria Sumantri menguraikan berbagai aspek filsafat ilmu, mulai dari ontologi (apa itu ilmu), epistemologi (bagaimana ilmu diperoleh), hingga aksiologi (untuk apa ilmu digunakan). Buku ini membantu pembaca memahami hakikat ilmu, batas-batasnya, serta tanggung jawab etis dalam pengembangan dan penerapan ilmu pengetahuan.',
+        'average_rating' => 4.5,
+        'rating_count' => 60,
+        'reviews' => [
+            ['reviewer_name' => 'Dosen Budi', 'review_text' => 'Penjelasan yang ringkas dan padat. Sangat cocok untuk mahasiswa dan umum.', 'review_date' => '10/05/2025', 'rating' => 5],
+            ['reviewer_name' => 'Mahasiswa Cerdas', 'review_text' => 'Membantu memahami dasar-dasar pemikiran ilmiah. Sangat direkomendasikan.', 'review_date' => '03/05/2025', 'rating' => 4],
+        ]
+    ],
 ];
 ?>
