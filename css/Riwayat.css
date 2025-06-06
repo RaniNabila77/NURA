@@ -1,0 +1,416 @@
+/* css/Riwayat.css */
+
+/* --- Layout Dasar Halaman (diasumsikan dari globals.css) --- */
+/* (Pastikan ini sudah ada di globals.css atau style.css, tidak perlu duplikasi di sini) */
+/*
+body { background-color: #F5EEE1; color: #2C3E50; font-family: 'Poppins', sans-serif; }
+.app-container { display: flex; min-height: 100vh; }
+.main-content-area { flex-grow: 1; display: flex; flex-direction: column; padding: 0; margin-left: 225px; transition: margin-left 0.3s ease-in-out; background-color: #F5EEE1; position: relative; }
+.main-content { flex-grow: 1; padding: 30px; box-sizing: border-box; }
+*/
+
+/* --- Header Placeholder (Pengganti header.php) --- */
+/* (Pastikan ini ada di globals.css, seperti yang saya sarankan di respons sebelumnya) */
+/*
+.header-placeholder { position: absolute; top: 0; right: 0; padding: 15px 30px; background-color: transparent; z-index: 50; width: 100%; box-sizing: border-box; display: flex; justify-content: flex-end; align-items: center; pointer-events: none; }
+.profile-button-header-round { ... }
+.profile-button-header-round img { ... }
+.header-buttons { ... }
+.header-button { ... }
+*/
+
+/* --- Wrapper Halaman Riwayat --- */
+.riwayat-page-container {
+    max-width: 1200px; /* Lebar maksimum konten */
+    margin: 0 auto; /* Pusatkan di tengah */
+    width: 95%; /* Fleksibel untuk layar yang lebih kecil */
+    box-sizing: border-box;
+}
+
+/* --- Judul Halaman --- */
+.page-title-riwayat {
+    font-family: "Inter", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 25px; /* Jarak dari card utama */
+}
+
+/* --- Riwayat Card (Kotak Putih Utama) --- */
+.riwayat-card {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* --- Form Pencarian Flexbox --- */
+.search-form-flex {
+    display: flex;
+    justify-content: flex-end; /* Posisikan ke kanan */
+    margin-bottom: 25px; /* Jarak dari header tabel */
+    flex-wrap: wrap; /* Izinkan wrap di mobile */
+    gap: 10px; /* Jarak antara input dan tombol di mobile */
+}
+
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #d5e7ff;
+    border-radius: 25px;
+    padding: 0 15px;
+    height: 42px;
+    flex-grow: 1; /* Biarkan mengisi ruang jika ada */
+    max-width: 300px; /* Batasi lebar maksimum */
+}
+
+.search-input-field {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    padding: 0 5px;
+    font-family: "Poppins", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 18px;
+    outline: none;
+}
+
+.search-input-field::placeholder {
+    color: #000000;
+    opacity: 0.7;
+}
+
+.search-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0; /* Hapus padding default button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.2s ease-in-out;
+    color: #000000; /* Warna ikon jika pakai Material Icons */
+}
+
+.search-button:hover {
+    transform: scale(1.1);
+}
+
+.search-button .material-icons { /* Gaya untuk ikon Material Icons */
+    font-size: 24px; /* Ukuran ikon Material Icons */
+}
+
+/* --- Wrapper Responsif Tabel (untuk overflow) --- */
+.table-responsive-wrapper {
+    overflow-x: auto; /* Aktifkan scroll horizontal jika tabel terlalu lebar */
+    -webkit-overflow-scrolling: touch; /* Untuk smooth scrolling di iOS */
+    box-shadow: inset 0 -2px 5px rgba(0,0,0,0.05); /* Shadow untuk indikasi scrollable */
+    border-radius: 15px; /* Border radius agar cocok dengan card */
+}
+
+/* --- Tabel Riwayat (Flexbox) --- */
+.history-table {
+    display: flex;
+    flex-direction: column;
+    min-width: 800px; /* Lebar minimum tabel agar tidak terlalu sempit */
+    border-collapse: collapse; /* Untuk tampilan seperti tabel HTML */
+}
+
+/* Header Tabel */
+.table-header-row {
+    background-color: #8cd7ff;
+    border-radius: 15px 15px 0 0; /* Sudut bulat hanya di atas */
+    display: flex;
+    padding: 0 10px;
+    height: 56px;
+    align-items: center;
+    font-family: "Poppins", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 16px;
+}
+
+.header-cell {
+    flex: 1; /* Distribusi lebar secara merata */
+    text-align: center;
+    padding: 8px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 80px; /* Lebar minimum untuk setiap header kolom */
+}
+
+.header-cell.header-book {
+    flex: 1.5; /* Beri sedikit lebih banyak ruang untuk kolom Buku */
+    min-width: 150px;
+}
+
+/* Baris Data Tabel */
+.table-data-row {
+    display: flex;
+    padding: 15px 10px;
+    border-bottom: 1px solid #EAEAEA;
+    align-items: center;
+    font-family: "Poppins", Helvetica;
+    font-weight: 500;
+    color: #2C3E50;
+}
+
+.table-data-row:last-child {
+    border-bottom: none;
+}
+
+.data-cell {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+    display: flex;
+    flex-direction: column; /* Default untuk sel data */
+    align-items: center;
+    justify-content: center;
+    min-width: 80px; /* Minimal width untuk sel data */
+}
+
+/* Gaya untuk Kolom Buku */
+.data-cell.data-book {
+    flex: 1.5; /* Proporsi sama dengan header */
+    display: flex;
+    flex-direction: row; /* Gambar dan teks sejajar */
+    align-items: center;
+    justify-content: flex-start; /* Rata kiri */
+    gap: 10px;
+    min-width: 150px;
+}
+
+.book-thumbnail {
+    width: 60px; /* Ukuran thumbnail buku */
+    height: 90px;
+    background-size: cover;
+    background-position: 50% 50%;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Rata kiri teks detail buku */
+    text-align: left;
+    flex-grow: 1;
+    min-width: 80px; /* Biarkan teks menyusut */
+}
+
+.book-title-small {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2C3E50;
+    word-break: break-word; /* Biarkan teks pecah kata */
+    line-height: 1.3;
+}
+
+.book-author-small {
+    font-size: 12px;
+    color: #7F7F7F;
+    word-break: break-word;
+    line-height: 1.3;
+}
+
+/* Gaya untuk nilai data (bukan kotak) */
+.data-value {
+    background-color: #d5e7ff;
+    border-radius: 15px;
+    padding: 8px 12px;
+    display: inline-block; /* Agar padding dan border-radius bekerja */
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000000;
+}
+
+/* Gaya Status dan Denda */
+.data-value.status-returned { background-color: #C8E6C9; color: #388E3C; }
+.data-value.status-borrowed { background-color: #FFECB3; color: #FFA000; }
+.data-value.denda-paid { background-color: #FFCDD2; color: #D32F2F; }
+.data-value.denda-none { background-color: #d5e7ff; color: #000000; } /* Default jika tidak ada denda */
+
+
+/* Pesan tidak ada hasil */
+.no-results-message {
+    text-align: center;
+    padding: 30px 15px;
+    font-size: 1.2em;
+    color: #555;
+    background-color: #f0f0f0;
+    border-radius: 0 0 15px 15px; /* Bulatkan sudut bawah */
+    margin-top: -1px; /* Gabungkan dengan header tabel */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+
+/* --- Responsiveness --- */
+@media (max-width: 1024px) {
+    .riwayat-page-container {
+        width: 98%;
+    }
+    .page-title-riwayat {
+        font-size: 28px;
+    }
+    .search-input-wrapper {
+        max-width: 250px; /* Sedikit kecilkan search box */
+    }
+    .search-input-field {
+        font-size: 16px;
+    }
+
+    .history-table {
+        min-width: 700px; /* Kurangi min-width */
+    }
+    .header-cell, .data-cell {
+        font-size: 14px;
+        min-width: 70px;
+    }
+    .header-cell.header-book, .data-cell.data-book {
+        min-width: 130px;
+    }
+    .book-thumbnail {
+        width: 50px;
+        height: 75px;
+    }
+    .book-title-small {
+        font-size: 13px;
+    }
+    .book-author-small {
+        font-size: 11px;
+    }
+    .data-value {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 15px;
+    }
+    .page-title-riwayat {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .search-form-flex {
+        justify-content: center; /* Pusatkan di mobile */
+        width: 100%;
+    }
+    .search-input-wrapper {
+        max-width: 100%; /* Lebar penuh di mobile */
+    }
+    .history-table {
+        min-width: 100%; /* Biarkan tabel mengisi lebar wrapper */
+        display: block; /* Agar bisa pakai overflow-x */
+    }
+    .table-responsive-wrapper {
+        overflow-x: auto;
+    }
+
+    /* Transformasi Baris Data menjadi Tumpukan untuk Mobile */
+    .table-header-row {
+        display: none; /* Sembunyikan header di mobile (akan diganti data-label) */
+    }
+    .table-data-row {
+        flex-direction: column; /* Tumpuk item dalam satu baris */
+        align-items: flex-start; /* Rata kiri */
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .table-data-row:last-child { border-bottom: 1px solid #ddd; } /* Kembalikan border untuk yang terakhir */
+
+    .data-cell {
+        width: 100%; /* Setiap sel data menjadi lebar penuh */
+        text-align: left; /* Rata kiri */
+        padding: 5px 0;
+        display: flex; /* Aktifkan flex untuk label dan nilai */
+        flex-direction: row; /* Label dan nilai sejajar */
+        justify-content: space-between; /* Dorong label ke kiri, nilai ke kanan */
+        align-items: center;
+    }
+
+    /* Menambahkan label dari data-label */
+    .data-cell::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #555;
+        margin-right: 10px;
+        flex-shrink: 0; /* Pastikan label tidak menyusut */
+        min-width: 80px; /* Lebar minimum untuk label */
+        text-align: left;
+    }
+
+    .data-cell.data-book {
+        flex-direction: row; /* Tetap row untuk thumbnail dan detail */
+        justify-content: flex-start;
+        align-items: center;
+        padding-bottom: 10px; /* Jarak dari data di bawahnya */
+        border-bottom: 1px dashed #eee; /* Garis pemisah */
+        margin-bottom: 10px;
+    }
+    .data-cell.data-book::before {
+        content: ""; /* Hapus label untuk kolom buku */
+        margin-right: 0;
+        min-width: unset;
+    }
+
+    .book-thumbnail {
+        width: 70px;
+        height: 100px;
+        margin-right: 15px;
+    }
+    .book-details {
+        flex-grow: 1;
+        text-align: left;
+        min-width: unset;
+    }
+    .book-title-small { font-size: 15px; }
+    .book-author-small { font-size: 13px; }
+
+
+    .data-value {
+        background-color: transparent; /* Hapus background di mobile */
+        border-radius: 0;
+        padding: 0;
+        font-size: 14px;
+        white-space: normal; /* Izinkan nilai wrap jika panjang */
+        text-align: right; /* Rata kanan nilai */
+        flex-grow: 1;
+    }
+    /* Warna untuk status dan denda di mobile (teks langsung) */
+    .data-value.status-returned { color: #388E3C; }
+    .data-value.status-borrowed { color: #FFA000; }
+    .data-value.denda-paid { color: #D32F2F; }
+    .data-value.denda-none { color: #000000; }
+
+    .no-results-message {
+        border-radius: 8px; /* Bulatkan sudut */
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title-riwayat { font-size: 20px; }
+    .search-input-field { font-size: 16px; }
+    .search-button .material-icons { font-size: 20px; }
+
+    .book-thumbnail { width: 50px; height: 75px; }
+    .book-title-small { font-size: 13px; }
+    .book-author-small { font-size: 11px; }
+
+    .data-cell::before { font-size: 12px; min-width: 70px; }
+    .data-value { font-size: 13px; }
+    .no-results-message { font-size: 1em; padding: 20px 10px; }
+}
