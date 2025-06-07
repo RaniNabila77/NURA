@@ -148,7 +148,7 @@ function renderBookSection($title, $bookIdsArray, $allBooksData) {
                     // Anda harus memiliki data pengguna yang sesuai dengan $_SESSION['user_id']
                     $allUserDataDummy = [
                         'user123' => [
-                            'avatar' => 'img/default-profile.png', // Contoh avatar pengguna
+                            'avatar' => 'img/profile.png', // Contoh avatar pengguna
                             // ... data pengguna lainnya
                         ],
                     ];
