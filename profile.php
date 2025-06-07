@@ -12,7 +12,7 @@ $allUserData = [
         'alamat' => 'Binuan Parami Bumi Indah',
         'telepon' => '0838-8764-3200',
         'tanggal_bergabung' => '01/01/2023',
-        'avatar' => 'img/profile-nura.png', // Pastikan path ini benar
+        'avatar' => 'img/profile.png', // Pastikan path ini benar
         'nomor_register' => '12345677', // Tambahan data dari Figma
         'no_handphone' => '083887643200', // Sesuai figma
         'gender' => 'Perempuan', // Sesuai figma
@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
                         </div>
                         
                         <div class="books-loaned-card">
-                            <img src="img/book_icon.png" alt="Icon Buku" />
+                            <img src="img/book.png" alt="Icon Buku" />
                             <h3>Buku Terpinjam</h3>
                             <div class="count"><?php echo htmlspecialchars($user['buku_dipinjam_count']); ?></div>
                         </div>
